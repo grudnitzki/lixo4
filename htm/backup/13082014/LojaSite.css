@@ -1,0 +1,324 @@
+
+@font-face {
+    font-family: 'open_sanssemibold';
+    src: url('/fonts/opensans-semibold-webfont.eot');
+    src: url('/fonts/opensans-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/opensans-semibold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+TH {background:#fff;color:#333}
+TD {font-size:13px}
+img {border-style:none}
+
+/* Estilos de fundo */
+.FundoSiteCentro{background:#FFFFFF}
+/* .FundoTopoExt{background:#FFFFFF}*/
+.FundoSiteInt{background:#FFFFFF}
+
+/* Estilos para as páginas */
+.Titulos {color:#574020;font-size:9pt;font-family:verdana;text-decoration:none;font-weight:bold}
+.smSelect {font-size:8pt;font-family:tahoma,verdana}
+.smText {font-size:8pt;font-family:tahoma,verdana}
+.mnText {font-size:7pt;font-family:verdana,arial}
+.mdtxt {font-size:9pt;font-family:verdana,arial}
+.lgtxt {font-size:16px;font-weight:bold;color:#fa143b;font-family:tahoma,verdana;text-decoration:none}
+.TextoPequeno {font-size:7pt;font-family:tahoma,verdana}
+
+/* Estilos para a capa */
+.EstTexto1{font-weight:bold;color:#242d3a;font-size:12px;font-family:verdana,tahoma,arial;position:relative;top:6px;left:20px}
+.EstTexto2 {font-size:8pt;font-family:tahoma,verdana}
+.EstTexto3 {font-size:8pt;font-family:tahoma,verdana}
+.EstTexto4 {font-size:16pt;font-family:tahoma,verdana;color:#1a1b1d;position:relative;left:0px;top:10px; font-weight:bold;}
+.EstTexto5 {font-size:14pt;font-family:tahoma,verdana;color:#1a1b1d;position:relative;left:150px;top:10px; font-weight:bold;}
+.StyNameProdHome {font-family:tahoma,arial;font-size:8pt;font-weight:bold;color:#574020}
+.EstListaNomeProdCapa {font-size:8pt;font-family:verdana,arial}
+.EstDescrProdCapa {font-size:8pt;font-family:tahoma,verdana}
+.EstAdicProdCapa {font-size:8pt;font-family:tahoma,verdana}
+.AdicNomeCapa {font-size:8pt;font-family:tahoma,verdana}
+.AdicItemCapa {font-size:8pt;font-family:tahoma,verdana;font-weight:bold;color:#574020}
+.EstPrecoProdCapa {color:#972B00;font-size:8pt;font-family:arial}
+.EstFundoTabCapa {background:#FFFFFF;font-size:8pt;font-family:arial}
+.StyBorderProdHome{border-color:#DDDDDD;border-width:1px;border-style:solid}
+.ProdImageTopHalf{background-image: url(../images/ProdImageTopHalf.gif);background-repeat: repeat-x;}
+.ProdImageBottomHalf{background-image: url(../images/ProdImageBottomHalf.gif);background-repeat: repeat-x;}
+.ProdImageLeftHalf{background-image: url(../images/ProdImageLeftHalf.gif);background-repeat: repeat-y;}
+.ProdImageRightHalf{background-image: url(../images/ProdImageRightHalf.gif);background-repeat: repeat-y;}
+
+/* Estilos para a Barra */
+.EstTitSecao {background:#FFFFFF; font-weight:bold}
+.EstCorTabInt {background:#FFFFFF}
+.EstCorTabPromExt {background:#e8e8e8}
+.EstCorTabPromInt {background:#EDEEE9}
+.EstListaNomeProdBarra {font-size:9pt;font-family:verdana,arial;font-weight:bold;color:#928A44}
+.EstPrecoProdBarra {font-size:8pt;color:#972B00;font-family:arial}
+.EstLinhaBarra{background:#FFFFFF}
+.EstLinhaBarraExt{background:#FFFFFF}
+
+/*  Estilo para os formulários BOTÕES e INPUTs TEXT */
+.InputButton {-webkit-appearance: button;border-width:1;font-size:11;font-family:verdana}
+
+/*  Estilo BOTÕES */
+.BotLancamento {color:#FF0101;font-size:7pt;font-family:verdana,arial}
+.BotComprar{display:none}
+.BotEsgotado {font-size:8pt;font-family:verdana,arial}
+.BotExcluir {font-size:8pt;font-family:verdana,arial}
+.BotMaisDetalhes {color:#574020;font-size:7pt;font-family:verdana,arial;text-decoration:none}
+
+/*  Fundo do topo e menu */
+.TopoMenu{background:#FFFFFF}
+
+/* Estilos do PEDIDO */
+.EstTabPedidoFrete {font-size:8pt;background:#FEF6EC;font-weight:bold}
+.EstTextoQtd {font-size:8pt;font-family:tahoma,verdana;text-align:right}
+
+/* Estilo de Títulos de Tabela CADASTRO DE CLIENTES, AJUDA, CONFIRMAÇÃO DO PEDIDO */
+.EstTabTopo {padding:5px 3px 3px 3px;background:#dfcfb2;color:#3C5F6D;font-size:9pt;font-family:tahoma,verdana;font-weight:bold}
+
+/* Estilo dos campos do formulário clientes,fale conosco,... 	*/
+.EstNomeCampo {font-size:13px;font-weight:bold; }
+.EstCampo {font-size:13px}
+
+
+/* ESTILOS PARA AS FOTOS DE PRODUTOS NA CESTA E CROSS-SELLING  */ 
+.EstFotoProdCross{width:67;height:100}
+.EstFotoProdCesta{width:67;height:100}
+
+
+/*Toolbar*/
+#fc-toolbar{ width: 100%;	height: 60px;	position:fixed; 	background-color: #FA143B;	text-align: center;	font-family: tahoma;	font-size: 12px;	color: #FFF;	z-index: 99999 !important;	}
+#fc-controler{float: left; padding: 0 5px 0 10px}
+#fc-sep{float: left; padding: 6px 5px 0 10px; border-left:1px solid #fff; height: 19px;}
+#fc-logo{float: left; padding: 5px 0 0 25px;}
+
+.shadow {background-color: rgb(68,68,68); /* Needed for IEs */-moz-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);-webkit-box-shadow: 5px 5px 5px rgba(68,68,68,0.6);box-shadow: 1px 1px 14px rgba(68,68,68,0.6);filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";zoom: 1;}
+
+#blocoCentralizado {display: block;width: 980px;height: 60px;margin-left: auto ;margin-right: auto ; }
+  #bloco1 { width: 180px; height: 60px; float: left}
+  #bloco2 { width: 439px; height: 60px; float: left}
+  #bloco3 { width: 315px; height: 60px; float: left}  
+
+/*Toolbar Busca*/
+
+#fc-search {width:439px; height:60px; float: left;padding: 4px 0 0 5px}
+.fc-search-campo {float:left; color:#666; border:none; background:url("../images/lupa.png") no-repeat #fff; font-size:16px; width:400px; height: 30px; padding:0px 36px; font-weight:bold;-moz-border-radius: 3px 0px 0px 3px; /* Para Firefox */-webkit-border-radius: 3px 0px 0px 3px; /*Para Safari e Chrome */border-radius: 3px 0px 0px 3px; /* Para Opera 10.5+*/}
+.fc-search-bot {float:right; height:30px; border:none; width:39px; margin:0; padding:0; background: url(../images/layout/ok.png) no-repeat; cursor:pointer}
+
+/*Toolbar Cart*/
+#fc-cart{ width: 300px; height: 30px; float: right; margin: 3px 6px 0 0px;background: #fff ; border: 1px solid #E73241; -moz-border-radius: 3px; /* Para Firefox */-webkit-border-radius: 3px; /*Para Safari e Chrome */border-radius: 3px; /* Para Opera 10.5+*/}
+#fc-cart-data{float: left; padding: 3px 0 0 23px}
+#fc-cart-data > p {font-size: 17px; color: #FF283A;padding-left:74px}
+#fc-cart-data > a {font-size: 17px; color: #FF283A; text-decoration: none}
+#fc-cart-data > a:hover{font-size: 17px; color: #FF283A; text-decoration: none}
+#fc-cart-controler{float: left; padding: 2px 7px 0 4px}
+#fc-cart-container{ background: #fff; border: 2px solid #E62636; width: 288px; height: 273px;float: left; z-index: 99999 !important;  -moz-border-radius: 5px; /* Para Firefox */-webkit-border-radius: 5px; /*Para Safari e Chrome */border-radius: 5px; /* Para Opera 10.5+*/; margin: 4px 0 0 0; padding: 5px;font-size: 12px; color: #FF283A;}
+#fc-cart-container td{float: left; padding: 3px 2px 6px 2px; height: 30px; text-align: left; border-bottom: 1px solid #F2CACE; color: #FF283A;}
+#fc-cart-container a{font-size: 12px; color: #FF283A;text-decoration: none}
+#fc-cart-container a:hover{font-size: 12px; color: #FF283A;text-decoration: none}
+#fc-cart-parc{font-size: 14px; color: #FF283A;text-decoration: none;font-weight:bold; float: left}
+#fc-cart-parc div{padding: 2px 0px 0px 77px; float: left}
+#fc-cart-parc p{padding: 2px 0px 0px 42px; float: left}
+
+#fc-shipping{width: 404px;height: 30px;float: left; padding: 0 0 0 48px }
+#fc-shipping p{font-size: 18px; float: left}
+#fc-shipping span{font-size: 18px}
+#fc-shipping-free{font-size: 18px; }
+#fc-shipping-gratis {color: #FEEDBA;font-size: 26px; float: right; margin: -27px 0 0 14px}
+
+#ponto-rolagem{float: left; height: 60px;}
+
+/*Cart Topo*/
+#fc-cart-topo{ width: 300px; height: 30px; float: right; margin: -4px 13px 0px 0px;background: #fff ; border: 1px solid #E73241; -moz-border-radius: 12px; /* Para Firefox */-webkit-border-radius: 12px; /*Para Safari e Chrome */border-radius: 12px; /* Para Opera 10.5+*/}
+#fc-cart-topo-container{position:absolute; background: #fff; border: 2px solid #839440; width: 288px; height: 273px;float: right; z-index: 99999 !important;  -moz-border-radius: 12px 0 12px 12px; /* Para Firefox */-webkit-border-radius: 12px 0 12px 12px; /*Para Safari e Chrome */border-radius: 12px 0 12px 12px; /* Para Opera 10.5+*/; margin: 0 -21px 0 0; padding: 5px;font-size: 12px; color: #839440;right:22px;top:122px}
+
+#ffc-cart-topo-container{top:118px;left:790px;position:fixed; background: #fff; border: 2px solid #839440; width: 288px; height: 273px;float: left; z-index: 99999 !important;  -moz-border-radius: 12px 0 12px 12px; /* Para Firefox */-webkit-border-radius: 12px 0 12px 12px; /*Para Safari e Chrome */border-radius: 12px 0 12px 12px; /* Para Opera 10.5+*/; margin: 4px 0 0 0; padding: 5px;font-size: 12px; color: #839440;}
+
+#fc-cart-topo-container td{float: left; padding: 3px 2px 6px 2px; height: 30px; text-align: left; color: #839440;border-bottom: 1px solid #F2CACE;}
+#fc-cart-topo-container a{font-size: 12px; color: #839440;text-decoration: none;text-align: left;float: left}
+#fc-cart-topo-container a:hover{font-size: 12px; color: #839440;text-decoration: none}
+#fc-cart-topo-parc{font-size: 14px; color: #839440;text-decoration: none;font-weight:bold; float: left}
+#fc-cart-topo-parc div{padding: 2px 0px 0px 77px; float: left}
+#fc-cart-topo-parc p{padding: 2px 0px 0px 42px; float: left}
+
+/*Scroll to top*/
+#toTop {display:none;text-decoration:none;position:fixed;bottom:10px;right:10px;overflow:hidden;width:51px;height:51px;border:none;text-indent:100%;background:url(../images/scrolltotop.png) no-repeat left top;}
+#toTopHover {background:url(../images/scrolltotop.png) no-repeat left -51px;width:51px;height:51px;display:block;
+overflow:hidden;float:left;opacity: 0;-moz-opacity: 0;filter:alpha(opacity=0);}
+#toTop:active, #toTop:focus {outline:none;}
+
+/*Dados no checkout*/
+
+.fc-rodape-info{font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333; clear:both; float:none; height:25px; padding-top:2px;padding:10px; font-weight: bold}
+.fc-topo-tele { position:absolute; width:305px; top:72px; left:278px; font-size: 25px; color: #FF053B}
+.fc-rod-info{font-family:Arial, Helvetica, sans-serif; font-size:13px; color:#333; clear:both; float:none; height:25px; padding-top:2px;padding:10px; font-weight: bold;margin-left: 68px;}
+
+#fc-frete{ color: #FF283A; font-weight: bold; margin: 4px 0 0 0px }
+#fc-frete-lista{ color: #FF283A; font-weight: bold; float: left; margin: 4px 0 0 0px }
+.fc-passo-frete{ color: #000; font-weight: bold; margin: 10px 0 0 0px; text-align: center }
+
+.fc-menu img{-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;}
+#fc-consulta{height: 30px}
+
+/*Rastreio*/
+.fc-rastreio{width: 230px;height:70px; background: #F7F7F7; padding: 10px;-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;}
+.fc-rastreio h2{ color: #FF283A; text-transform: uppercase}
+.fc-rastreio h4{ color: #B5B5B5;}
+#fc-consulta-ok{ margin-top: 0}
+.txtNewsNome {background: none repeat scroll 0 0 #CCCCCC;border: medium none;border-radius: 3px 3px 3px 3px;color: #333333;font-size: 13px;padding: 4px 0 2px 4px;width: 190px;}
+.fc-prod-qtd{float: left}
+
+/*ShowCartOnPage*/
+.fc-botfin{background:url(../images/bot_fin_ped.png) no-repeat}
+
+#Path2{font-weight: bold}
+#Path3 a{ cursor: default;text-decoration: none}
+#Path3 a:hover{ cursor: default; color: #000; text-decoration: none}
+
+.fc-tit{ font-size: 26px; color: #ff0000; text-transform: uppercase; font-weight: bold; margin: 20px 0px}
+.fc-banner1{background: url(../images/banner_09.jpg) no-repeat; width: 208px; height: 322px;}
+.fc-banner2{background: url(../images/banner_06.jpg) no-repeat; width: 208px; height: 322px;}
+.fc-banner3{background: url(../images/banner_07.png) no-repeat; width: 208px; height: 322px;}
+.fc-banner4{background: url(../images/banner_08.jpg) no-repeat; width: 208px; height: 322px;}
+
+.PathIni{float:left; padding-right:10px; font-size: 14px; font-weight: bold; color: #000}
+
+.os_tBanner1 ul{
+	margin-right: 20px;
+	float: right;
+}
+
+.os_tBanner1 li{
+	display: inline-block;
+	*float: right;
+}
+.os_tBanner1 a{
+	text-decoration: none;
+	margin-left: 5px !important;
+	margin-right: 5px !important;
+	color: #686868;
+	text-align: right;
+}
+.os_tBanner1 a:hover{
+	text-decoration: underline;
+}
+
+
+.os_tMenuPromo ul{
+	margin-right: 20px;
+	float: right;
+}
+
+.os_tMenuPromo li{
+	display: inline-block;
+	padding-top: 8px;
+}
+.os_tMenuPromo a{
+	font-weight: bold;
+}
+.os_tMenuPromo a,
+.os_tMenuPromo p{
+	text-decoration: none;
+	margin-left: 5px !important;
+	margin-right: 5px !important;
+	color: #686868;
+	text-align: right;
+}
+.os_tMenuPromo a:hover{
+	text-decoration: underline;
+}
+
+/* Ajuda.htm */
+.fc-AjudaTit a{color:#ff283a;font-size:14px;font-family:arial;font-weight:bold;text-decoration:none;}
+.fc-AjudaTit a:hover{color:#ff283a;font-size:14px;font-family:arial;font-weight:bold;text-decoration:underline;}
+.fc-AjudaTit-BIG{color:#ff283a;font-size:22px;font-family:arial;font-weight:bold;}
+.fc-AjudaDesc-BIG{color:#585858;font-size:13px;font-weight:bold;}
+
+
+/* MaisPrazer.htm | Notícias */
+#idAllNewsFC .lgtxt a{font-size:22px;font-weight:bold;color:#ff283a;text-decoration:none}
+#idAllNewsFC .lgtxt a:hover{color:#585858;text-decoration:underline}
+#idAllNewsFC .smText span{font-size:13px;color:#787878;}
+#idAllNewsFC .LocalDateNewsList{color:#9b9b9b;}
+
+#idTitNewsFC{font-size:22px;font-weight:bold;color:#ff283a;text-decoration:none}
+#idSubTitNewsFC{font-size:13px;color:#787878;}
+#idTextNewsFC{font-size:14px;}
+
+
+/* Track */
+#idTrackFC #Enviar{color:#FFFFFF;font-size:30px;border:1px solid ;font-weight: bold;background-color:#00b800;width:237px;height:63px;cursor:pointer;-moz-border-radius: 6px; /* Para Firefox */-webkit-border-radius: 6px; /*Para Safari e Chrome */border-radius: 6px; /* Para Opera 10.5+*/}
+
+
+/* MegaMenu Toolbar */
+.zFMegaMenuToolbar{margin:0px 0px 0px 30px}
+ul#TopoMenuTodos {list-style:none;margin:35px 0px 0px 0px;}
+ul#TopoMenuTodos li {display:block;width:130px;list-style:none;}
+ul#TopoMenuTodos li a#TodosServicos {display:block;width:152px;height:16px;background-color:#fe2337;color:#FFFFFF;font-weight:bold;}
+ul#TopoMenuTodos li a span {font-size:0;visibility:hidden;}
+ul#TopoMenuTodos li ul {display:none;position:absolute;background:#a60105;width:200px;border:0px solid #445B71;padding:10px 15px 15px 15px;z-index:99999;margin:-2px 0px 0px 20px;-moz-border-radius: 0px 6px 6px 6px; -webkit-border-radius: 0px 6px 6px 6px;border-radius: 0px 6px 6px 6px;box-shadow: 3px 3px 5px #474747;}
+ul#TopoMenuTodos li:hover ul, ul#TopoMenuTodos li.over ul {display:block;}
+ul#TopoMenuTodos li ul li {float:left;width:100%;height:auto;padding:5px 0px 0px 0px;text-align:left;}
+ul#TopoMenuTodos li ul li a {color:#ffffff;font-size:11px;padding:0px 0px 0px 0px;font-weight:bold;text-align:left; }
+ul#TopoMenuTodos li ul li a:hover {color:#ffffff;font-size:11px;padding:0px 0px 0px 0px;text-decoration:underline;font-weight:bold; }
+ul#TopoMenuTodos li ul li#menuCatalogo {float:none;clear:left;width:100%;border-top:1px solid #C4C4C4;position:relative;top:20px;padding-bottom:20px;text-align:center;}
+ul#TopoMenuTodos li ul li#LinhaCategoria {float:none;clear:left;width:30%;border-top:1px solid #CECECE;}
+#NomeCategoriaCat {font-family:Arial;font-size:14px;padding:10px 0px 0px 30px;color:#000000}
+
+
+.zFLinkAtivoPrincipal0{background: #090!important;color:yellow;}
+.zFLinkAtivoPrincipal1{display:block; text-decoration:none; font-size:10px; font-family: "open_sanssemibold"; text-transform:uppercase; color:#ff6600; padding:13px 8px 10px 8px; background: url(../images/seta.png) no-repeat center bottom}
+
+
+ul#mega-menu li.pai .zFLinkAtivoPrincipal{color:#430002;}
+ul#mega-menu li.pai .zFLinkAtivoSub{color:#430002;}
+
+
+
+.zFLinkAtivoSub111{background:yellow!important;color:yellow;}
+
+
+
+
+
+
+/*Menu DropDown Noticias*/
+.zFTitNewsMenu{background-color:#fd2d41;font-size:22px;padding:0px 0px 0px 10px;color:#FFFFFF}
+.zFTitNewsBackgroundArrow{background-color:#e4e4e4;background-image:url(../images/IcNewsBackground.png);background-repeat:repeat-x;}
+.zFTitNewsLinkMenu{color:#717171;font-weight:bold;font-family:arial;font-size:13px;margin:5px;}
+.zFTitNewsLinkMenu:hover{color:#686868;font-weight:bold;font-family:arial;font-size:13px;margin:5px;text-decoration:none;}
+ul.MenuBarHorizontal{margin: 0;padding: 0;list-style-type: none;font-size: 100%;cursor: default;width: auto;}
+ul.MenuBarActive{z-index: 100000000;}
+ul.MenuBarHorizontal li{margin: 0;padding: 0;list-style-type: none;font-size: 100%;position: relative;text-align: left;cursor: pointer;width: 310px;float: left;}
+ul.MenuBarHorizontal ul{margin: 0;padding: 0;list-style-type: none;font-size: 100%;z-index: 1020;cursor: default;width: 310px;position: absolute;left: -1000em;}
+ul.MenuBarHorizontal ul.MenuBarSubmenuVisible{left: auto;}
+ul.MenuBarHorizontal ul li{width: 310px;}
+ul.MenuBarHorizontal ul ul{position: absolute;margin: -5% 0 0 95%;}
+ul.MenuBarHorizontal ul.MenuBarSubmenuVisible ul.MenuBarSubmenuVisible{left: auto;top: 0;}
+ul.MenuBarHorizontal ul{background-color:#e4e4e4;width:308px;}
+ul.MenuBarHorizontal a{display: block;cursor: pointer;color: #333;text-decoration: none;}
+ul.MenuBarHorizontal a:hover, ul.MenuBarHorizontal a:focus{color: #686868;}
+ul.MenuBarHorizontal a.MenuBarItemHover, ul.MenuBarHorizontal a.MenuBarItemSubmenuHover, ul.MenuBarHorizontal a.MenuBarSubmenuVisible{color: #FFF;}
+ul.MenuBarHorizontal a.MenuBarItemSubmenu{background-repeat: no-repeat;background-position: 95% 50%;}
+ul.MenuBarHorizontal ul a.MenuBarItemSubmenu{background-repeat: no-repeat;background-position: 95% 50%;}
+ul.MenuBarHorizontal a.MenuBarItemSubmenuHover{background-repeat: no-repeat;background-position: 95% 50%;}
+ul.MenuBarHorizontal ul a.MenuBarItemSubmenuHover{background-repeat: no-repeat;background-position: 95% 50%;}
+ul.MenuBarHorizontal iframe{position: absolute;z-index: 1010101010;filter:alpha(opacity:0.1);}
+@media screen, projection
+{
+	ul.MenuBarHorizontal li.MenuBarItemIE
+	{
+		display: inline;
+		f\loat: left;
+		background: #FFF;
+	}
+}
+
+/* Paginacao Noticias */
+#idCurrentPageFC {height:0px;padding:0px 0px 0px 0px}
+#idMiddlePageFC a{color:#525b6a;padding:8px 6px 8px 6px;margin:0px 0px;text-decoration:none;border:2px solid #f0f0f0;font-weight:bold;}
+#idMiddlePageFC a:hover{padding:8px 6px 8px 6px;margin:0px 0px;text-decoration:underline;border:2px solid #fa143b;color:#fa143b;font-weight:bold;}
+#idMiddlePageFC #idCurrentPageFC {padding:8px 6px 8px 6px;border:2px solid #b1102b;color:#fff;font-weight:bold;background-color:#fa143b;font-size:14px;}
