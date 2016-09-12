@@ -1,0 +1,518 @@
+/* FastCommerce - MOBILE */
+
+.EstEspacoTopoMenu{display:none;position:absolute;left:-2000px;}
+.EstEspacoTopoConteudo{display:none;position:absolute;left:-2000px;}
+.EstEspacoEsquerdaConteudo{position:absolute;left:-2000px;}
+.EstLinhaBarra{display:none;position:absolute;left:-2000px;}
+.EstLinhaBarraExt{display:none;position:absolute;left:-2000px;}
+
+/* Font Contax Sans */
+@font-face{
+font-family: 'ContaxSans55Reg-webfont';
+src: url('/fonts/ContaxSans55Reg-webfont.eot');
+src: url('/fonts/ContaxSans55Reg-webfont.eot?iefix') format('eot'),
+url('/fonts/ContaxSans55Reg-webfont.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+/* Font Monoxil Regular */
+@font-face{
+font-family: 'Monoxil_Regular-webfont';
+src: url('/fonts/Monoxil_Regular-webfont.eot');
+src: url('/fonts/Monoxil_Regular-webfont.eot?iefix') format('eot'),
+url('/fonts/Monoxil_Regular-webfont.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+/* Font Sonus Light */
+@font-face{
+font-family: 'SonusLig-webfont';
+src: url('/fonts/SonusLig-webfont.eot');
+src: url('/fonts/SonusLig-webfont.eot?iefix') format('eot'),
+url('/fonts/SonusLig-webfont.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+/* Font Mentone SemiBold */
+@font-face{
+font-family: 'mentone-semibol-webfont';
+src: url('/fonts/mentone-semibol-webfont.eot');
+src: url('/fonts/mentone-semibol-webfont.eot?iefix') format('eot'),
+url('/fonts/mentone-semibol-webfont.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+/* Font Geotica Three */
+@font-face{
+font-family: 'Geotica_Three-webfont';
+src: url('/fonts/Geotica_Three-webfont.eot');
+src: url('/fonts/Geotica_Three-webfont.eot?iefix') format('eot'),
+url('/fonts/Geotica_Three-webfont.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+#idTxtCorreiosFC{display:none;}
+#idTxtCPFFC{display:none;}
+#idTxtCEP1FC{display:none;}
+#idTxtSMSFC{display:none;}
+#idTxtNascFC{display:none;}
+#idTxtSenhaMinFC{display:none;}
+#idTxtLembreteFC{display:none;}
+#idTxtCEP2FC{display:none;}
+#idTxtEntregaFC{display:none;}
+#idTxtccNomeFC{display:none;}
+#RegiaoEnvio{width:180px;}
+.idTxtTrackFC{display:none;}
+.idTxtTrackConfFC{display:none;}
+.idTxtPrintFC{display:none;}
+.EstLinkASEnews{display:none;}
+
+body {font-size:12px;font-family:tahoma,verdana;background-color:#ffffff;color:#333333}
+p {font-size:12px;font-family:verdana,arial;color:#333333}
+TH {font-size:12px;color:#336699;font-family:verdana,arial;color:#333333}
+TD {font-size:12px;font-family:tahoma,verdana;color:#333333}
+img{border:0px;}
+input {border-radius: 0;}
+
+/* Estilos de fundo */
+.x_FundoSiteCentro{background-color:#ffffff}
+.x_FundoTopoExt{background-color:#ffffff}
+.x_FundoSiteInt{background-color:#ffffff}
+.x_FundoBarraDireita{background-color:#ffffff;}
+.x_FundoBarraEsquerda{background-color:#ffffff;}
+
+/* BarraTopo */
+.MbbBarraTopoEsq{background-image:url(../images/MbbBarraTopoEsq.png);background-repeat:no-repeat;width:8px;height:37px;}
+.MbbBarraTopoMeio{background-image:url(../images/MbbBarraTopoMeio.png);background-repeat:repeat-x;height:37px;}
+.MbbBarraTopoDir{background-image:url(../images/MbbBarraTopoDir.png);background-repeat:no-repeat;width:8px;height:37px;}
+.MbsLinkMenu a{text-decoration:underline;color:#505050;text-align:center;font-size:14px;font-weight:bold;}
+.InputTextSearch{border-color:#dbdfe2;border-width:1px;border-style:solid;background-color:#ffffff;font-size:14px;color:#000000; -webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; margin-left: 10px; box-shadow:inset 0 5px 3px #B2B1B1; -moz-box-shadow:inset 0 5px 3px #B2B1B1;}
+
+/* Estilos para as páginas */
+.Titulos {color:#A70505;font-size:12px;font-family:verdana;text-decoration:none;font-weight:bold}
+.smSelect {font-size:14px;font-family:tahoma,verdana}
+.smText {font-size:8px;font-family:tahoma,verdana}
+.mnText {font-size:10px;font-family:verdana,arial}
+.mdtxt {font-size:12px;font-family:verdana,arial}
+.lgtxt {font-size:12px;font-weight:bold;color:#990000;font-family:tahoma,verdana;text-decoration:none}
+.TextoPequeno {font-size:10px;font-family:tahoma,verdana}
+
+/* Estilos para a capa */
+.EstFotoProdDELETAR {height:120}
+.EstNomeProdCapa{font-family:tahoma,arial;font-size:12px;font-weight:bold;color:#03375b;text-decoration:underline;}
+.EstDescrProdCapa {font-size:12px;font-family:tahoma,verdana}
+.EstAdicProdCapa {font-size:12px;font-family:tahoma,verdana}
+.AdicNomeCapa {font-size:12px;font-family:tahoma,verdana}
+.AdicItemCapa {font-size:12px;font-family:tahoma,verdana;font-weight:bold;color:#A70505}
+.EstPrecoProdCapa {color:#6f9e45;font-size:14px;font-family:arial}
+.EstPrecoProdCapa strike{color:#ff0000;font-size:12px;font-family:arial}
+.EstFundoTabCapa {background-color:#FFFFFF;font-size:12px;font-family:arial}
+.MbsImageHome .EstImgFC{width:100px;height:100px;border-color:#dbdfe2;border-width:1;border-style:solid;}
+.TitHome{color:#2f363f;font-family: 'mentone-semibol-webfont', Arial, sans-serif;font-size:20px;text-decoration:none;font-weight:bold}
+
+/*  Estilo para os formulários BOTÕES e INPUTs TEXT */
+.InputText {border-color:#333333;border-width:1;border-style:solid;background-color:#F5F5F5;font-size:11;font-family:tahoma,verdana;color:#6C6C6C}
+.InputTextBusca {height:18px;border-color:#333333;border-width:1;border-style:solid;background-color:#F5F5F5;font-size:11;font-family:verdana;color:#6C6C6C}
+.InputButton {border-width:1;font-size:11;font-family:verdana}
+
+/*  Estilo BOTÕES */
+.BotLancamento {color:#FF0101;font-size:8px;font-family:verdana,arial}
+.BotComprar {display:none}
+.BotEsgotado {font-size:12px;font-family:verdana,arial}
+.BotExcluir {font-size:12px;font-family:verdana,arial}
+.BotMaisDetalhes {color:#990000;font-size:8px;font-family:verdana,arial;text-decoration:none}
+
+/*  Texto das Setas de VER MAIS */
+.BotVerMais {display:none;color:#000000;font-size:10px;font-family:verdana,arial;font-weight:bold;text-decoration:none}
+.BotVerMais:hover {color:#FF0000;text-decoration:underline}
+
+/*  Menu inferior (Claro) */
+.MenuInf {font-weight:bold;background-color:#f0f0f0;font-size:14px;font-family:tahoma,verdana,arial;color:#0F1A15;text-decoration:none;}
+
+/*  Estilo PRODUTOS */
+.EstNomeProd {color:#4386c3;font-size:14px;font-weight:bold;font-family:arial,tahoma,verdana}
+.EstNomeCat, .EstNomeCat a, .EstNomeCata:hover, .EstNomeCat a:visited{color: #e31614;font-size:12px;font-weight:bold;font-family:arial,tahoma,verdana; text-decoration: none}
+.EstRefProd {color:#8E8E8E;font-size:10px;font-family:verdana}
+.EstDescrProd {font-size:12px;font-family:tahoma,verdana}
+.EstPrecoProd {color:#385171;font-size:16px;font-family:arial}
+.EstMaisInfo {color:black;font-size:10px;font-family:tahoma,verdana}
+.AdicNome {font-size:12px;font-family:tahoma,verdana}
+.AdicItem {font-size:12px;font-family:tahoma,verdana;font-weight:bold;color:#5280dc}
+.EstLinhaProd {color:#CFCFCF;height:1px;width:95%}
+.ProdOut{list-style-type: none;;margin:0px 0px 0px -40px}
+.MbsImageLista .EstImgFC{width:100px;height:150px;}
+.EstNomeProdLista{font-family:tahoma,arial;font-size:12px;font-weight:bold;color:#03375b;text-decoration:underline;}
+.EstPrecoProdDet {color:#6f9e45;font-size:18px;font-family:arial}
+.EstPrecoProdDet strike{color:#ff0000;font-size:16px;font-family:arial}
+.MbsSocialMedia{border-color:#dbdfe2;border-width:1px;border-style:solid;background-color:#ffffff;padding:5px;}
+.MbsImageDet img{width:150px;height:150px;}
+#idDivImagemTopoCatFC{display:none}
+
+/*  Estilo SUBPRODUTOS */
+.EstRefSubProd {color:#000000;font-size:10px;font-family:verdana,arial}
+.EstDescrSubProd {color:#000000;font-size:10px;font-family:verdana,arial}
+.EstPrecoSubProd {color:#222222;font-size:10px;font-family:arial}
+.EstLinhaSubProd {background-color:#555555;height:1px;width:100%}
+.EstCorParSubProd {background-color:#FAFAFA}
+.EstCorImparSubProd {background-color:#F0F0F0}
+
+/*  Estilo das opiniões de produtos */
+.EstOpiniaoLinha {color:#CFCFCF;height:1px;width:100%}
+
+/* Estilos do PEDIDO */
+.EstFotoProdCesta{display:none;}
+.EstTabPedidoTit {background-color:#FF283A;color:#fff;font-size:12px;font-family:arial;}
+.EstTabPedidoNome {color:#FF283A;font-size:6px;font-weight:bold;font-family:arial,verdana}
+.EstTabPedidoNome:visited {color:#333333}
+.EstTabPedidoNome:hover {color:#990000}
+#idTopoConfirmacaoFC .EstTabPedido {font-size:8px;background-color:#f7f7f7; width: 80%}
+.EstTabPedido {font-size:8px;background-color:#f7f7f7;}
+.EstTabPedidoNum {font-size:8px;background-color:#f7f7f7;font-family:arial;color: #8f8f8f;font-weight: bold}
+.EstTabPedidoTotal {font-size:8px;background-color:#f7f7f7;color: #8f8f8f;font-weight: bold}
+.EstTabPedidoFrete {font-size:8px;background-color:#F4F4F4;}
+.EstTabPedidoBot {color:#000000;font-size:10px;font-weight:bold;font-family:verdana,arial; width: 0px; background: #f9f9f9}
+.EstTabPedidoRef {color:black;font-size:6px;font-family:tahoma,verdana}
+.EstTabPedidoAdicNome {font-size:8px;font-family:tahoma,verdana;color: #8f8f8f;font-weight: bold}
+.EstTabPedidoAdicItem {font-size:6px;font-family:tahoma,verdana; color: #8f8f8f;font-weight: bold}
+.EstTextoQtd {font-size:8px;font-family:tahoma,verdana;text-align:right}
+.EstContinuarComprando{font-size:12px;font-weight:bold;font-family:tahoma,verdana;color:#990000}
+
+/* Estilo de Títulos de Tabela CADASTRO DE CLIENTES, AJUDA, CONFIRMAÇÃO DO PEDIDO */
+.EstTabTopo {padding:5px 3px 3px 3px;background-color:#F3F3F3;color:#385171;font-size:13px;font-family:arial,verdana;font-weight:bold}
+
+/* Estilo para a tabela de Busca Rápida, para tabela de Ajuda (Pagamentos) e Fale Conosco */
+.EstTabQuadroCustom {background-color:#FAFAFA;font-size:10px;font-family:arial,Helvetica}
+
+/* Estilo dos campos do formulário clientes,fale conosco,... 	*/
+.EstNomeCampo {color:black;font-size:10px;font-family:tahoma,verdana;font-weight:bold}
+.EstCampo {font-size:10px;font-family:tahoma,verdana}
+
+/* cart */
+.MbslinkCart a{text-decoration:underline;color:#044974;font-size:14px;}
+.MbsEstPrecoProdCesta {color:#044974;font-size:14px;}
+
+/*  RODAPÉ */
+.RodapeMenuNormal {font-size:16px;font-family: 'ContaxSans55Reg-webfont', Arial, sans-serif;color:#3d3d3d;text-decoration:underline;font-weight:bold;}
+.RodapeMenuNormal:visited {color:#3d3d3d;font-weight:bold;}
+.RodapeMenuNormal:active {color:#000000;font-weight:bold;}
+.RodapeMenuNormal:hover {color:#000000;text-decoration:underline;font-weight:bold;}
+.TitRodape{color:#2f363f;font-family: 'mentone-semibol-webfont', Arial, sans-serif;font-size:20px;text-decoration:none;font-weight:bold}
+.TitRodapeF{color:#2f363f;font-family: 'mentone-semibol-webfont', Arial, sans-serif;font-size:20px;text-decoration:none;font-weight:bold;background-color:#f5f5f5;}
+.FundoRodape{background-image:url(../images/FundoRodape.gif);background-repeat:repeat-x;}
+.TitNavRapida a{font-size:14px;font-family:'ContaxSans55Reg-webfont',tahoma,verdana,arial;color:#2f363f;text-decoration:none;}
+.TitNavRapida a:hover{font-size:14px;font-family:'ContaxSans55Reg-webfont',tahoma,verdana,arial;color:#000000;text-decoration:underline;}
+.BackgroundCopyRight{background-color:#f5f5f5;height:30px;}
+.MbsSelect{margin: 3px 0px 0px 0px;padding: 6px; width: 260px; font-family: arial, sans-serif; font-size: 12px; border: 1px solid #ccc;}
+
+/* Zoom IMG Detalhe */
+.MagicZoom img {border: 0 !important;padding: 0 !important;margin: 0 !important;}
+.MagicZoomBigImageCont {border: 1px solid #999;}
+.MagicZoomHeader {font-size: 10px !important;line-height: normal !important;color: #fff;background: #666;text-align: center !important;}
+.MagicZoomPup {border: 1px solid #aaa;background: #fff;cursor: move;}
+.MagicZoomLoading {border: 1px solid #ccc;background: #fff url(../images/ajax-loader.gif) no-repeat 2px 50%;padding: 4px 4px 4px 24px !important;margin: 0;text-decoration: none;text-align: left;font-size: 10px;font-family: sans-serif;color: #444;}
+
+/* Zip Code */
+.ZipBackground{border:1px solid #eaeaea;background:#fbfbfb;padding:5px 5px 5px 5px;}
+.ZipTitCalc{font-size:12px;color:#373737;font-family:tahoma,verdana,arial;font-weight:bold}
+.ZipTitType{font-size:12px;color:#1f1f1f;font-family:tahoma,verdana,arial;}
+.ZipInputButton {border:1px solid #999;font-size:14px;width:80px;height:22px;}
+.ZipSubmitButton{border:1px solid #0b2d5b;color:#0b2d5b;background-color:#edf5ff;font-weight:bold;height:22px;cursor:pointer;outline:none;}
+.ZipName{font-size:12px;color:#373737;font-family:tahoma,verdana,arial;font-weight:bold;margin-top: 2px;}
+.ZipObsVal{font-size:12px;color:#373737;font-family:tahoma,verdana,arial;}
+.ZipLink a{font-size:11px;color:#525252;font-family:tahoma,verdana,arial;text-decoration:underline}
+.ZipLink a:hover{font-size:11px;color:#ff0000;font-family:tahoma,verdana,arial;text-decoration:underline}
+.ZipValue{font-size:12px;color:#000000;font-family:tahoma,verdana,arial;font-weight:bold}
+
+.FundoBarraEsquerda, .FundoBarraDireita{ display: none}
+
+/*Topo*/
+#fc-carrinho{ background: url(../images/carrinho.png) no-repeat; width: 160;height: 65px}
+#fc-carrinho-txt{color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); padding-left: 46px}
+#fc-carrinho-txt a{color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); text-decoration: none}
+#fc-carrinho-preco{color: #ff6875; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1);padding-left: 57px}
+#fc-carrinho-itens{color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); padding-left: 63px}
+#fc-busca{background: #FF283A; height: 60px}
+#TextoBusca{color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1);font-weight: bold}
+#banner-info .EstImgFC{ width: 100%}
+
+#rodape-left{ background: #f2f3f5}
+.txt-1{ font-size: 14px; color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); padding: 0px}
+.txt-1 a{font-size: 14px; color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); padding: 0px;text-decoration: none}
+
+.txt-2{ font-size: 12px; color: #686868; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); 
+padding-top: 10px}
+.txt-3{ font-size: 8px; color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); padding: 0px}
+.txt-4{ font-size: 22px; color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); padding: 0px}
+.txt-4 a{font-size: 22px; color: #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1); padding: 0px; text-decoration: none}
+.dotted{ border-bottom: 1px dotted #72777f; text-shadow: 1px 1px 1px #ffffff;filter: dropshadow(color=#ffffff, offx=1, offy=1);}
+.bg-rodape-right{ background: url(../images/bg_rod_right.png)repeat-x;}
+#redes-sociais{background: #d3d4d5}
+
+#idTitPagFC{ display: none}
+#fc-ordenacao{ background: #e5e5e5;}
+#fc-ordenacao select{ width: 125px; margin: -12px 0 0 10px; border-color:#dbdfe2;border-width:1px;border-style:solid;background-color:#ffffff;font-size:14px;color:#000000; -webkit-border-radius: 2px 0 0 2px;-moz-border-radius: 2px 0 0 2px;border-radius: 2px 0 0 2px;box-shadow:inset 0 5px 3px #ccc; -moz-box-shadow:inset 0 5px 3px #ccc;}
+.nivo-controlNav{ display: none}
+#idBRListaProdFC, #idFoundFC, #idPageCountFC1{display: none}
+#OrderProd{}
+
+.EstPathCat{ font-size: 14px; font-weight: bold; font-family: arial;}
+#fc-brad .EstPathCat ul{border-bottom:1px dashed #CCCCCC}
+.EstPathCat a{color: #FF283A; font-size: 14px; text-decoration: none; text-transform: uppercase}
+.EstPathCat a:hover{color: #FF283A; font-size: 14px; text-decoration: none;text-transform: uppercase}
+.EstPathCat a:visited{color: #FF283A; font-size: 14px; text-decoration: none;text-transform: uppercase}
+.EstPathCat .wid{background: url("../images/PathCat.png") no-repeat scroll center bottom transparent;}
+
+
+#fc-detalhe-bread .EstPathCat{ font-size: 11px; font-weight: bold; font-family: arial;}
+#fc-detalhe-bread .EstPathCat ul{}
+#fc-detalhe-bread .EstPathCat a{color: #CCCCCC; font-size: 11px; text-decoration: none; text-transform: uppercase}
+#fc-detalhe-bread .EstPathCat a:hover{color: #CCCCCC; font-size: 11px; text-decoration: none;text-transform: uppercase}
+#fc-detalhe-bread .EstPathCat a:visited{color: #CCCCCC; font-size: 11px; text-decoration: none;text-transform: uppercase}
+#fc-detalhe-bread .EstPathCat .wid{background: url("../images/PathCat2.png") no-repeat scroll center bottom transparent;}
+#fc-detalhe-bread .EstPathCat .pad{background: none;}
+#fc-brad .EstPathCat .pad{background: none;}
+
+#fc-detalhe-nomeprod {color: #FF283A;font-size: 14px; font-weight: bold; font-family: arial;border-bottom:1px dashed #CCCCCC;text-transform: uppercase;}
+
+#fc-detalhe-lancamento{text-align:right}
+
+
+#fc-lista-cat{color: #B5B5B5;font-size: 12px; text-decoration: none; text-transform: uppercase; padding-left: 0px}
+#fc-brad{margin-left: 20px}
+#fc-lista-content{border: 1px solid #ccc;margin: 10px 0 0 20px}
+.fc-lista-nomeprod, .fc-lista-nomeprod a, .fc-lista-nomeprod a:hover, .fc-lista-nomeprod a:visited{ color: #686868; text-decoration: none;}
+.fc-lista-preco{ color: #e31614}
+.fc-lista-maxparc{ color: #686868}
+#1idFoundFC{color: #fff; position:relative;}
+#1idFoundFC b{ color: #9d9d9d; position: absolute; right: 50%; left: 50%; top: 203px;}
+#idPageCountFC{ position: absolute; color: #9d9d9d;font-weight: bold; left: 65%; right: 25%; top: 168px}
+
+
+
+
+/* Ampliacao zoom 2 */
+#container_image { width:450px; height:450px; position:absolute; overflow:hidden; top:0; border:1px solid #ccc; z-index:999999; background:#fff }
+.mzoom {left:455px; z-index:999999 !important}
+.ezoom { left:-2000px; z-index:0 !important; border:none !important; background:none !important}
+.bgZoom {background-color: rgb(119, 119, 119); opacity: 0.7; cursor: pointer; height: 1771px}
+img#imageos { position:absolute; z-index:999999 !important } 
+img#thumbos {width:300px; cursor:url(../images/layout/cursorZOOM.gif),crosshair; z-index:2; position:relative; left:0; border:1px solid #E2E2E2 }
+.bgFoto { z-index:2000 !important}
+
+
+/* Ampliacao lightbox */
+.os_BtAmpliar { text-align:center; margin-top:20px; height:30px }
+.os_BtAmpliar .b_passemouse { float:left; font-size:12px; color:#555; width:250px; line-height:30px }
+.os_BtAmpliar .b_lightbox { float:left; width:60px }
+.os_BtAmpliar .b_hd { float:right; width:140px}
+.b_hd a { display:block; font-size:0; color:#fff; text-indent:-99999px; width:140px; height:30px; background:#fff url(../images/layout/fotohd.png) no-repeat }
+
+.row3_1 .b_lightbox { float:left; width:60px }
+.row3_1 .b_hd { float:right; width:140px}
+.b_hd a { display:block; font-size:0; color:#fff; text-indent:-99999px; width:140px; height:30px; background:#fff url(../images/layout/fotohd.png) no-repeat }
+
+
+
+/* Variacao de fotos */
+.os_Miniaturas {height:1px; overflow:hidden; float: left; width: 100%}
+.os_Miniaturas img {width:68px; height:68px; margin:4px 1px; border:1px solid #E2E2E2; cursor:pointer}
+/* Grid de produtos */
+.os_GradeComprar {width:100%;padding:0; margin:34px 0 0 0}
+#t0, #t1 {width:300px}
+.etapaum { background:#fff url(../images/layout/etapa1.png) no-repeat left center }
+.etapadois { background:#fff url(../images/layout/etapa2.png) no-repeat left center }
+.etapatres { background:#fff url(../images/layout/etapa3.png) no-repeat left center }
+.NivelOn {color:#9A9A9A; display:table; margin:0 0 6px 0; padding:2px 6px 6px 6px; padding-left:50px }
+.NivelOff {color:#9A9A9A; display:table; margin:0 0 6px 0; padding:2px 6px 6px 6px; padding-left:50px }
+.estOpcaotrue {color:#333333}
+.estOpcaofalse {color:#AAAAAA}
+.BotComprarGrid {background:url('../images/MbhBotGridSelecione.png') no-repeat; cursor:pointer; width:240px; height:80px; border:none; margin-top: 5px;}
+ul.lstColor {float:center; display:inline; zoom:1; overflow:hidden; margin: 0 0 0 0}
+ul.lstColor li {float:left; display:inline; height:auto; padding:4px; margin-left:4px}
+.FC_Opcao {cursor:pointer; font-size:14px; background-repeat:no-repeat !important}
+.titGride {font-size:13px; color:#9A9A9A; margin: 7px 0; display:block}
+.gradeComprar { width:250px; color:#666; margin:0 0 15px 0; padding:6px 6px 6px 50px}
+.gradeComprarDados { width:250px; height:90px; position:absolute; z-index:2; display: block; cursor:pointer }
+#alerta { width:241px; border-radius:4px; background:#000 url(../images/layout/alerta.gif); font-size:11px; color:#fff; text-align:center; font-weight:bold; display:none; font-family:Arial, Helvetica, sans-serif; padding:10px 0 }
+.os_radio {position:absolute; margin-left:-999999px }
+label.FC_Opcao, label.estOpcaotrue, label.estOpcaofalse { display:block; margin:2px; float:left; border:3px solid #ccc; background:#fff; font-size:15px; font-weight:bold; text-align:center; cursor:pointer }
+label.estOpcaofalse {cursor:auto; background: url(../images/layout/gradevaziu.gif) no-repeat top left !important}
+label.FC_Opcao:hover, label.estOpcaotrue:hover { border:3px solid #ccc; }
+.gradeComprar span { font-family:Arial, Helvetica, sans-serif; color:#000 !important; font-size:12px; font-weight:bold }
+/*dados extras*/
+.os_redes { padding:8px 0 }
+.os_extras { padding:8px 0; font-size:13px; color:#666666; border-bottom:1px solid #e2e2e2; width: 100% }
+.AdicNome, .AdicItem { color:#666; font-size:13px}
+.AdicNome { font-weight:bold}
+.os_extras a {font-size:13px; color:#666666 }
+/*cross selling*/
+.EstPrecoProdCross { color:#FE2337; font-size:14px; font-weight:bold}
+#idTabCrossFC .AdicItem { font-size:13px; color:#333 }
+#idTabCrossFC .AdicItem a { text-decoration:none}
+/*descricao*/
+.descricaoHtm, .descricaoHtm p { font-size:13px; line-height:17px; color:#333; padding: 8px}
+.descricaoHtm p.acressimo { color:#666; padding:3px 0  }
+.descricaoHtm p.acressimo a {color:#666; text-decoration:underline}
+.descricaoHtm p.acressimo a:hover { color:#000; text-decoration:none}
+.descricaoHtm h2 { font-size:14px; font-weight:bold; color:#333 }
+.descricaoHtm ul, .descricaoHtm ul li { clear:both; float:none; list-style:inside;margin:0;padding:0 }
+.descricaoHtm ol, .descricaoHtm ol li { clear:both; float:none; list-style:inside decimal;margin:0;padding:0 }
+
+/* Modelos  */
+.row1_1 { width:100%; position:relative; float:none; clear:both }
+/* duas colunas modelo 1 */
+.row2_1 { width:250px; position:relative; float:left; margin-left:10px }
+.row2_2 { width:672px; position:relative; float:right; margin-right:10px }
+/* duas colunas modelo 2 */
+.row3_1 { width:100%; position:relative; float:left; padding: 0; margin-top: 11px}
+.row3_1_5 { width:445px; float:right; margin-right:20px }
+.row3_2 { width:100%; float:left; padding-left:0px }
+
+.os_imgDetalhes { width:300px; position:relative;margin-top: 15px}
+
+.osp_price { font-size:14px; color:#717171; padding:15px 0 0 0;margin-top: -30px; width: 100%}
+
+.osp_price b {font-size:17px; color:#333 }
+
+.osp_economia { font-size:15px; color:#666; padding:10px 0 15px 0; width: 100%;}
+.osp_economia br { display:none}
+
+.osp_parcela {width: 100%}
+.osp_parcela b {font-size:30px; color:#0B24FB; font-weight:normal;}
+
+.os_BtAmpliar { text-align:center; margin-top:20px; height:30px }
+.os_BtAmpliar .b_passemouse { float:left; font-size:12px; color:#555; width:240px; line-height:30px }
+.os_BtAmpliar .b_lightbox { float:left; width:60px }
+.os_BtAmpliar .b_hd { float:right; width:140px}
+.b_hd a { display:block; font-size:0; color:#fff; text-indent:-99999px; width:140px; height:30px; background:#fff url(../images/layout/fotohd.png) no-repeat }
+
+.center{margin-left:auto;margin-right:auto;}
+
+.fc-detalhe-extra{ width: 300px; margin-top:10px}
+#fc-detalhe-desc{width: 100%; }
+.EstDescrProd div{color: #cccccc; padding: 10px 10px 0 0;}
+.fc-detalhe-tit{background: #cccccc; margin-left: -10px; height: 30px;text-align: center; padding-top: 14px }
+#idEstLinhaProdCrossFC, #idEstTDTitProdCrossFC{display: none}
+#idTabCrossFC tr{ display: inline}
+.EstRefProd, .EstContinuarComprando, #formatEnvio, .t {display: none}
+.EstFotoProdCross{ width: 50px; height: 75px; }
+
+#l1tr2 .AdicItem, #l2tr2 .AdicItem { font-size:10px; color:#333; }
+#l1tr2 .AdicItem a, #l2tr2 .AdicItem a { text-decoration:none;}
+.EstFotoProdCross{margin-left: 35px}
+.EstPrecoProdCross br{margin-left: 10px}
+
+.os_btesp1 {float:left; width:227px; height:80px; padding:12px 0}
+.os_btesp3 {float:left; width:295px; height:80px; padding:12px 0}
+#idTRBotoesCestaFC{ width: 250px;}
+#idTabBotPreviousNextFC{ background: #F9F9F9}
+
+.os_pagamento{ margin: 0 19px 0 19px; font-size: 10px}
+.os_pagamento .p1, .p2{font-size: 10px}
+
+#idRegisterFC p {font-size: 10px}
+/*Registro*/
+#idRegisterFC { margin:0 auto }
+#idRegisterFC td { padding:4px }
+#idRegisterFC .EstTabTopo { text-align:left !important; background:#F7F7F7; font-size:20px; font-weight:bold; color:#FE2337; border-bottom:6px solid #fff}
+#idCommentsConfirmation { text-align:left!important }
+#idCommentsConfirmation .os_coment { color:#666; font-weight:normal !important}
+#idCommentsConfirmation .os_coment2 { color:#999; font-size:13px; line-height:22px}
+#idTxtComentsFC { display:none}
+#idTabRegisterFC .smText { text-align:left !important }
+#idTabRegisterFC #P2Mensagem { width:514px }
+#idTxtCPFFC { display:none}
+.os_cadastroi, .t { width:920px; margin-left:15px; padding:0 0 20px 0; font-size:13px; color:#333 }
+.os_cadastroi img, .t img  { padding-top:15px }
+.os_cadastroi a, .t a { color:#FE2337}
+#idTabRegisterFC .InputButton { float:left; font-size:0; color:#939393;  width:102px; height:30px;  background:url(../images/layout/btRegistro.png) no-repeat; padding:0; margin:0; border:none }
+#idTxtTopoConfirmarFC { font-size: 8px;padding:5px; background: #99bd1b; border-radius: 5px; color:#fff; display:block;text-align:center}
+#idTxtTopoConfirmarFC a { color: white;}
+label[for=lanc]{font-size: 11px}
+label[for=promo]{font-size: 11px}
+
+#fc-frete{ color: #FF283A; font-weight: bold; margin: 4px 0 0 0px }
+.fc_verMais_lista{ width: 85px; float: left}
+.fc_verMais a{text-decoration: none; color: #686868; font-weight: bold; }
+.fc_verMais_lista a{text-decoration: none; color: #686868; font-weight: bold; float: left;  }
+
+
+#fc-frete-lista{ color: #FF283A; font-weight: bold; float: left; margin: 0px }
+
+#1TabItens{width: 200px}
+
+.ui-accordion .ui-accordion-header { display: block; cursor: pointer; position: relative; margin-top: 2px; padding: .5em .5em .5em .7em; zoom: 1; }
+.ui-accordion .ui-accordion-icons { padding-left: 0px; }
+.ui-accordion .ui-accordion-noicons { padding-left: .7em; }
+.ui-accordion .ui-accordion-icons .ui-accordion-icons { padding-left: 2.2em; }
+.ui-accordion .ui-accordion-header .ui-accordion-header-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 0px; border-top: 0; overflow: auto; zoom: 1; }
+
+#menu{ font-family: arial;text-transform: uppercase; color: #fff;}
+#menu a{padding: 0 10px; font: bold 13px/30px 'Arial', 'sans-serif'; text-decoration: none;color: #fff;list-style-type: none; text-transform: uppercase; margin-left: 34px}
+#menu a:hover{color: #fff;}
+
+#menu-verde{ background: url(../images/bullet.png) no-repeat #65B95C; width: 100%; height: 30px}
+#menu-verde-escuro{ background: url(../images/bullet.png) no-repeat #4A9B00; width: 100%; height: 30px}
+X#menu-cereja{ background: url(../images/bullet.png) no-repeat #FF283A;}
+X#menu-rosa{ background: url(../images/bullet.png) no-repeat #FF6875; }
+
+.menu{ font-family: arial;text-transform: uppercase; color: #fff;}
+.menu h3{height: 24px; padding: 0px; margin: 0px}
+.menu a{font-size: 17px; text-decoration: none;color: #fff;padding-left: 14px}
+.menu a:hover{color: #fff;}
+.menu a{font-size: 17px; text-decoration: none;color: #fff;padding-left: 45px}
+.menu a:hover{color: #fff;}
+
+#menu-links{height: 37px}
+
+.menu-verde{ background: url(../images/bullet.png) no-repeat #65B95C; width: 100%; height: 37px}
+.menu-verde-escuro{ background: url(../images/bullet.png) no-repeat #4A9B00; width: 100%; height: 37px}
+.menu-cereja{ background: url(../images/bullet.png) no-repeat #FF283A;}
+.menu-rosa{ background: url(../images/bullet.png) no-repeat #FF6875; }
+
+#idDivResumoCatFC{display: none}
+.EstDescrProd img {display: none}
+
+ul#accordion  { border: 0px solid #eee; border-bottom: 0; list-style-type: none;padding: 0px; margin: 0px}
+ul#accordion li {  border-bottom: 1px solid #eee; list-style-type: none;}
+ul#accordion li li { background: #eee; list-style-type: none;}
+ul#accordion a { padding: 0 10px; font: bold 13px/30px 'Arial', 'sans-serif'; color: #FFF; text-decoration: none; list-style-type: none; text-transform: uppercase; margin-left: 34px}
+
+ul#sub-accordion a { padding: 0 10px; font: bold 13px/30px 'Arial', 'sans-serif'; color: #000; text-decoration: none; list-style-type: none; text-transform: uppercase; margin: 0px}
+
+ul#accordion li:nth-child(odd) { background: #FF283A url(../images/bullet.png) no-repeat; }
+ul#accordion li:nth-child(even) { background: #FF6875 url(../images/bullet.png) no-repeat; }
+ul#sub-accordion li:nth-child(odd) { background: #fff}
+ul#sub-accordion li:nth-child(even) { background: #ccc}
+
+.os_extras table{ margin-left: auto; margin-right: auto}
+.footer-data{text-decoration: none; padding: 5px}
+.footer-data a, .footer-data a:hover{text-decoration: none; color: #FF283A; font-weight: bold}
+
+/* Custom RSS Noticias */
+.feedEkList{width:280px; list-style:none outside none;background-color:#FFFFFF; border:0px solid #D3CAD7; padding:2px 4px 2px 4px; color:#3E3E3E;}
+.feedEkList li{border-bottom:1px solid #D3CAD7; padding:0px;}
+.feedEkList li:last-child{border-bottom:none;}
+.itemTitle a{font-weight:bold; color:#ff283a !important; text-decoration:none;font-size:12px; }
+.itemTitle a:hover{font-weight:bold; color:#585858 !important; text-decoration:underline }
+.itemDate{font-size:11px;color:#9b9b9b;} 
+.rssDiv{float: left;padding-right: 30px;}
+#idAllNewsFC{width:280px;}
+.xEstTabQuadro{display:none;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
