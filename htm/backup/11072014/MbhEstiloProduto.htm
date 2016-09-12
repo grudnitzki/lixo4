@@ -1,0 +1,499 @@
+// FastCommerce - MbhEstiloProduto.htm
+<ProdTop>
+
+<script>
+function MostraMaxParcela(PrecoProd,MaxParcelas){
+  var ComSem;
+  if(PrecoProd>=15)MaxParcelas=3;
+  else if(PrecoProd>=1)MaxParcelas=1;
+  if(PrecoProd==0||MaxParcelas==1||Juros.length==0)return;
+  if(MaxParcelas==0||MaxParcelas>Juros.length)MaxParcelas=Juros.length;
+  if(Juros[MaxParcelas-1]>0)ComSem=""; else ComSem="&nbsp;sem&nbsp;juros</font>";
+  document.write("<b>"+MaxParcelas+"x</b>"+ComSem+" de&nbsp;<b>"+FormatPrecoReais(CalculaParcelaJurosCompostos(PrecoProd,MaxParcelas))+"</b>");
+}
+
+function MostraMaxParcelaDetalhe(PrecoProd,MaxParcelas){
+  var ComSem;
+  if(PrecoProd>=15)MaxParcelas=3;
+  else if(PrecoProd>=1)MaxParcelas=1;
+  if(PrecoProd==0||MaxParcelas==1||Juros.length==0)return;
+  if(MaxParcelas==0||MaxParcelas>Juros.length)MaxParcelas=Juros.length;
+  if(Juros[MaxParcelas-1]>0)ComSem=""; else ComSem="&nbsp;sem&nbsp;juros</font>";
+  document.write("<div class='center' style='width:250px'>"+MaxParcelas+"x</b>"+ComSem+"&nbsp;de&nbsp;<b>"+FormatPrecoReais(CalculaParcelaJurosCompostos(PrecoProd,MaxParcelas))+"</b></div>");
+}
+
+function MostraEconomia(PrecoProd,PrecoOri){
+if(PrecoProd!=PrecoOri)document.write("<br><font color=#6f9e45>Economize <strong>"+FormatPrice(PrecoOri-PrecoProd,'R$')+"</strong> ("+FormatNum(((PrecoOri-PrecoProd)/PrecoOri)*100)+"%)</font>");
+}
+
+function FormatNum(num){
+num=num.toString().replace(/\$|\,/g,'');
+if(isNaN(num))num="0";
+sign=(num==(num=Math.abs(num)));
+num=Math.floor(num*100+0.50000000001);
+num=Math.floor(num/100).toString();
+for(var i=0;i<Math.floor((num.length-(1+i))/3);i++)num=num.substring(0,num.length-(4*i+3))+'.'+num.substring(num.length-(4*i+3));
+return ((sign)?'':'-')+num;
+}
+</script>
+<script>
+function CartProd(ProdID,FormNum){
+  if(FormNum==0)var oForm=eval("Form"+ProdID);
+  else var oForm=eval("FCForm"+FormNum);
+  if(oForm==undefined)Adicional1=Adicional2=Adicional3=AdicionalD1=AdicionalD2=AdicionalD3=Cor="";
+  else{
+    Adicional1=GetAdicProd("Adicional1",oForm);
+    Adicional2=GetAdicProd("Adicional2",oForm);
+    Adicional3=GetAdicProd("Adicional3",oForm);
+    Cor=GetAdicProd("Cor",oForm);
+  }
+  var sParams="";
+  sParams+="&QTIncMult_"+ ProdID +"=1";
+  if(Adicional1!='')sParams+="&Adicional1_"+ ProdID +"="+ EncodeParamFC(Adicional1);
+  if(Adicional2!='')sParams+="&Adicional2_"+ ProdID +"="+ EncodeParamFC(Adicional2);
+  if(Adicional3!='')sParams+="&Adicional3_"+ ProdID +"="+ EncodeParamFC(Adicional3);
+  if(Cor!='')sParams+="&Cor_"+ ProdID +"="+ EncodeParamFC(Cor);
+  return sParams;
+}
+</script>
+
+<script>
+//Ordenação
+var sPag=document.location.href.toUpperCase();
+if(sPag.indexOf("/PROD,")==-1){sConcat="&";sCharSep="=";} else {sConcat=",";sCharSep=",";}
+if((sPag.indexOf("&DET=")==-1 && sPag.indexOf("&IDPRODUTO=")==-1) && (sPag.indexOf(",DET,")==-1 && sPag.indexOf(",IDPRODUTO,")==-1)){
+  document.write("<table width=100% id=fc-ordenacao><tr><td>");
+  document.write("<br><select id=OrderProd class=smSelect onchange=NewOrder() align=center>");
+  document.write("<option value=-1>Ordenar por:</option>");
+  document.write("<option value=0>Padrão</option>");
+  //document.write("<option value=1>Lançamentos</option>");
+  document.write("<option value=2>Destaques</option>");
+  document.write("<option value=3>Nomes das categorias</option>");
+  document.write("<option value=4>Nomes dos produtos</option>");
+  document.write("<option value=5>Avaliações dos clientes</option>");
+  //document.write("<option value=6>Promoções</option>");
+  document.write("<option value=7>Preços menores</option>");
+  document.write("<option value=8>Preços maiores</option>");
+  document.write("</select>");
+  document.write("</td>");
+  document.write("<td><input type='radio' id='lanc' name='opcao' value='1' onclick=document.location='ListaProdutos.asp?idloja=<IDLoja>&order=1&Digitada=True&Texto=++&ok='; /><label for='lanc'>Lancamento</label> ");    
+  document.write("</td>");    
+  document.write("<td><input type='radio' id='promo' name='opcao' value='6' onclick=document.location='/ListaProdutos.asp?idloja=<IDLoja>&order=6&Digitada=True&Texto=++&ok='; /><label for='promo'>Promocao</label>");    
+  document.write("</td></tr></table>");    
+  document.write("<table width=88% id=fc-brad>");
+  document.write("<tr><td id=fc-lista-cat><LegendaCat></td></tr>");    
+  document.write("<tr><td><PathCat></td></tr>");    
+  document.write("</table>");    
+  var oOrder=document.getElementById('OrderProd');
+  var posOrder=sPag.indexOf("ORDER"+sCharSep);
+  if(posOrder!=-1){
+    var iOrderCurrent=sPag.substr(posOrder+6,1);
+    if(!isNaN(iOrderCurrent))if(iOrderCurrent>=0){
+      var i=0;
+      while(i<oOrder.length && oOrder.options[i].value!=iOrderCurrent)i++;
+      if(i<oOrder.length)oOrder.selectedIndex=i;
+    }
+  }
+}
+
+function NewOrder(){
+  var iOrder=oOrder.options[oOrder.selectedIndex].value;
+  if(iOrder>=0){
+    if(posOrder!=-1){document.location.href=document.location.href.replace(new RegExp('order'+sCharSep+iOrderCurrent),'order'+sCharSep+iOrder);}
+    else{document.location.href=document.location.href.replace(new RegExp('idloja'+sCharSep+IDLojaNum,'gi'),'idloja'+sCharSep+IDLojaNum+sConcat+'order'+sCharSep+iOrder);}
+  }
+}
+</script>
+
+<style type="text/css">
+.TitTabParc{font-weight:bold;font-size:10px;font-family:tahoma,arial}
+.EstParcPar{background:#F8F8F8;font-size:10px;font-family:tahoma,verdana}
+.EstParcImpar{background:#FFFFFF;font-size:10px;font-family:tahoma,verdana}
+body {font-size:12px;font-family:tahoma,verdana;background:#ffffff}
+#idDivPagProd, #idDivOrder, #idDivPath, #idDivSearch {margin-top:15px;width:97%;border-style:solid;border-width:1px;border-color:#ffffff;}
+#idUlPathSearchFC {margin-left:10px;font-size:10px;}
+#idUlPathSearchFC li{font-size:10px;}
+#idUlPathSearchFC #idPathSearchTextInputFC{width:95px;background-color:#fcfcfc;font-size:12px;}
+#idLinkAdvancedSearchFC {text-decoration:none;font-size:10px;}
+#idLinkAdvancedSearchFC:hover{text-decoration:underline;color:#333333;}
+.EstTitQts {font-family:tahoma;font-size:10px;background-color:#eaeaea;padding:5px;}
+.EstDivQts{height:100%;border-style:solid;border-width:1px;border-color:#d0d0d0;}
+#idSelPathCatQtFC, #idSelAdic1QtFC, #idSelAdic2QtFC, #idSelAdic3QtFC {width:100%;}
+#idUlPathCatQtFC li,#idUlAdic1QtFC li,#idUlAdic2QtFC li,#idUlAdic3QtFC li{list-style-type:none;font-size:10px;margin:5px 10px 3px 5px}
+.EstTabFiltersExt{background-color:#ebebeb;height:28px;font-family:tahoma;font-size:10px;}
+.EstTabFiltersInt{background-color:#f7f7f7;}
+</style>
+<JurosParcelas>
+
+<!--<div id="idDivPath">
+  <table width="100%" class="EstTabFiltersExt"><tr><td>
+    <table><tr>
+      <td>&nbsp;&nbsp;&nbsp;Filtros da busca:</td>
+      <td>
+        <span id="idSpanShow"><a href="#Show" onClick="ToggleIDs('idSpanHide','idSpanShow');document.getElementById('idTablePathQtsFC').style.display='';"><img src="<BaseLoja>images/IcShow.png" border="0" alt="exibir filtros" /></a></span>
+        <span id="idSpanHide" style="display:none;"><a href="#Hide" onClick="ToggleIDs('idSpanShow','idSpanHide');document.getElementById('idTablePathQtsFC').style.display='none';"><img src="<BaseLoja>images/IcHide.png" border="0" alt="esconder filtros" /></a></span>
+      </td>
+    </tr></table>
+  </td></tr></table>
+  <table id="idTablePathQtsFC" class="EstTabFiltersInt" style="display:none;" width="100%">
+    <tr>
+      <td width="25%" valign="top" id="idListaProdCategoriasFC"><div class="EstTitQts">&nbsp;<LegendaCats></div><ListPathCatQt></td>
+      <td width="25%" valign="top" id="idListaProdAdicional1FC"><div class="EstTitQts">&nbsp;<NomeAdicional1></div><ListAdic1Qt></td>
+      <td width="25%" valign="top" id="idListaProdAdicional2FC"><div class="EstTitQts">&nbsp;<NomeAdicional2></div><ListAdic2Qt></td>
+      <td width="25%" valign="top" id="idListaProdAdicional3FC"><div class="EstTitQts">&nbsp;<NomeAdicional3></div><ListAdic3Qt></td>
+    </tr>
+  </table>
+</div>
+
+<div id="idDivSearch">
+  <table width="100%" class="EstTabFiltersExt"><tr><td>&nbsp;&nbsp;&nbsp;Filtrando por</td><td id="idTDLinkAdvancedSearchFC" width="130" nowrap="nowrap"></td></tr></table>
+  <table id="idTablePathSearchFC" width="100%" height="40" class="EstTabFiltersInt"><tr><td><ListPathSearch></td></tr></table>
+</div>-->
+
+<script>
+//AjustaFiltros();
+var iQtdProds=<QtProd>;
+</script>
+<!--<div id="idPagProdTop"><br /></div>Hide-->
+<script type="text/javascript">
+/*function myFunction()
+{
+//jQuery("#idFoundFC b:nth-child(2)").hide();
+
+/*var color = jQuery("#idFoundFC").css("color");
+
+//alert(color);
+if (color = rgb(255, 255, 255)){
+	jQuery("#idFoundFC").remove;
+	jQuery("#idFoundFC b").show;
+
+}*/
+
+/*var str=document.getElementById("idPageCountFC").innerHTML; 
+var n=str.replace("Página","");
+document.getElementById("idPageCountFC").innerHTML=n;
+}*/
+//myFunction();
+</script>
+</ProdTop>
+
+<ProdLista>
+<script>
+function MostraFreteGratisLista(iPeso){
+  if(iPeso==0){document.write("<div class='fc_verMais_lista'><a href='/prod,idloja,<IDLojaNum>,idproduto,<IDProduto>,<NomeProdUA>'>VER MAIS |&nbsp;</a></div><div id='fc-frete-lista'>FRETE GRÁTIS</div>");
+	  }else{document.write("<div class='fc_verMais'><a href='/prod,idloja,<IDLojaNum>,idproduto,<IDProduto>,<NomeProdUA>'>VER MAIS</a></div>");}
+}	
+</script>
+<!--<div id=idProdListaMobileFC>-->
+<ul class="ProdOut">
+  <li>
+	<table width="88%" border="0" id="fc-lista-content">
+		<tr>
+			<td align="center"width="100" valign="top"><div class="MbsImageLista"><ImagemProd></div></td>
+		</tr>
+		<tr>
+			<td align="center"width="100%" valign="top"><div class="fc-lista-nomeprod"><a href="/prod,idloja,<IDLojaNum>,idproduto,<IdProduto>,<NomeProdUA>">Ref: <CodProd>&nbsp;-&nbsp; <NomeProd></a></td>
+		</tr>
+		<tr>
+			<td align="center"width="100%" valign="top"><div class="fc-lista-preco"><PrecoSimples></PrecoSimples></div></td>
+		</tr>
+		<tr>
+			<td align="center"width="100%" valign="top"><script type="text/javascript">MostraEconomia(<PrecoNum>,<PrecoOri>);</script></td>
+		</tr>
+		<tr>
+			<td align="center"width="100%" valign="top"><div class="fc-lista-maxparc"><script>MostraMaxParcela(<PrecoNum>,<MaxParcelasProdNum>);</script></div></td>
+		</tr>
+		<tr>
+			<td align="center"width="100%" valign="top">+ <NomeCat></td>
+		</tr>
+		<tr>
+			<td align="center" width="100%" valign="top">
+				<div class="center" style="width:200px"><script>MostraFreteGratisLista("<PesoNum>");</script></div>
+			</td>
+		</tr>		
+	</table>
+  </li>
+</ul>
+</div>
+</ProdLista>
+
+
+<ProdDet>
+<link rel="stylesheet" href="<Baseloja>htm/jquery_fancybox.css?v=2.1.4" type="text/css" media="screen">
+<script src="<Baseloja>htm/js/jquery_fancybox.js?v=2.1.4" type="text/javascript"></script>
+
+<script src="<Baseloja>htm/MbhFC_Grid.js" type="text/javascript"></script>
+<script src="<Baseloja>htm/js/imageZoom_v3.js" type="text/javascript"></script>
+<script src="<Baseloja>htm/encoder.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+MM_preloadImages('/lojas/00000343/images/loadingComprar.gif');
+</script>
+<script type="text/javascript">
+var FC_aSubProd=new Array();
+var bDet=true;
+var bTemSubProds=false;
+var PrecoProdPaiOri=<PrecoOri>
+var PrecoProdPaiNum=<PrecoNum>
+var os_conta = 0;
+</script>
+<div id="ponto-rolagem"></div>
+<!--inicio produto-->
+<div class="row1_1">
+<!--dados do produto-->
+<div class="row1_1" style="padding:10px 0; height:30px">
+  <div style="padding-left:10px">
+  <div id="fc-detalhe-bread" style="border:none"><PathCat><div>
+  <div id="fc-detalhe-nomeprod"><NomeProd><div>
+</div>
+  <!--foto-->
+  <div class="row3_1">
+    <div class="os_imgDetalhes center">
+      <img src="<ImagemProdAmp>" id="thumbos" />      
+    </div>
+    <div id="container_image" class="ezoom">
+      <img src="<ImagemProdAmp>" id="imageos">
+    </div>   
+    
+   
+<script type="text/javascript">
+//lightbox
+jQuery.noConflict();
+jQuery(document).ready(function(jQuery) {
+	jQuery("a#os_imglight").fancybox();
+});
+</script>
+
+<script type="text/javascript">
+//Rolagem até o nome do produto
+jQuery.noConflict();
+jQuery(document).ready(function movimento() {
+	jQuery('html,body').animate({
+		scrollTop: jQuery("#ponto-rolagem").offset().top}, 1000);
+});
+</script>	
+	
+</script>
+
+<script type="text/javascript">
+//variacao
+function verificamini(img){
+img.onerror=null;
+document.getElementById('os_Miniaturas').style.display = 'none'; }
+function trataErroImagem(img){
+img.onerror=null;
+img.style.display = 'none'; }
+pdet  = "<ImagemProdAmp>";
+pdet2jpg = pdet.replace(/.jpg/gi, "_2.jpg");
+pdet3jpg = pdet.replace(/.jpg/gi, "_3.jpg");
+pdet4jpg = pdet.replace(/.jpg/gi, "_4.jpg");
+pdet2png = pdet2jpg.replace(/.png/gi, "_2.png");
+pdet3png = pdet3jpg.replace(/.png/gi, "_3.png");
+pdet4png = pdet4jpg.replace(/.png/gi, "_4.png");
+pdet2 = pdet2png.replace(/.gif/gi, "_2.gif");
+pdet3 = pdet3png.replace(/.gif/gi, "_3.gif");
+pdet4 = pdet4png.replace(/.gif/gi, "_4.gif");
+//document.write("<div class='os_BtAmpliar'><div class='b_passemouse'><b>Passe o mouse na imagem</b> para dar zoom</div>");
+document.write('<div class="fc-detalhe-extra center"><div class="b_lightbox"><a href="<ImagemProdAmp>" id="os_imglight" rel="lightbox"><img src="<BaseLoja>images/layout/icoAmpliar.png" width="30" height="30" /></a></div><div class="b_hd"><DescrURL></div></div>');
+document.write("<div class='os_Miniaturas' id='os_Miniaturas' style='display:block'>");
+document.write("<div class='center' style='width:300px'>");
+document.write("<img id='mfoto1' onerror='trataErroImagem(this)' src='"+ pdet +"' width='68' height='68'>");
+document.write("<img id='mfoto2' onerror='verificamini(this)' src='"+ pdet2 +"' width='68' height='68'>");
+document.write("<img id='mfoto3' onerror='trataErroImagem(this)' src='"+ pdet3 +"' width='68' height='68'>");
+document.write("<img id='mfoto4' onerror='trataErroImagem(this)' src='"+ pdet4 +"' width='68' height='68'>");
+document.write("</div>");
+document.write("</div>");
+
+//zoom
+jQuery(document).ready(function(){
+jQuery('#thumbos').mouseover(function(){
+     jQuery("#container_image").addClass("mzoom");
+     jQuery("#container_image").removeClass("ezoom");
+//	 jQuery("#container_image").hide();	 
+	 jQuery(".os_redes").css("display","block");
+         jQuery("#comprasubproduto").removeClass("os_relativo");
+	 jQuery("#EstTabBotComprar").removeClass("os_relativo");
+	 jQuery("#thumbos").addClass("bgFoto");
+   }).mouseout(function(){
+     jQuery("#container_image").removeClass("mzoom");
+     jQuery("#container_image").addClass("ezoom");
+	 jQuery(".os_redes").css("display","block");         
+	 jQuery("#comprasubproduto").addClass("os_relativo");
+	 jQuery("#EstTabBotComprar").addClass("os_relativo");
+         jQuery("#thumbos").removeClass("bgFoto");
+   });
+ // alterna foto
+jQuery("#mfoto1").click(function(){
+jQuery('#thumbos').attr('src',pdet);
+jQuery('#imageos').attr('src',pdet);
+jQuery('#os_imglight').attr('href',pdet); });
+jQuery("#mfoto2").click(function(){
+jQuery('#thumbos').attr('src',pdet2);
+jQuery('#imageos').attr('src',pdet2);
+jQuery('#os_imglight').attr('href',pdet2); });
+jQuery("#mfoto3").click(function(){
+jQuery('#thumbos').attr('src',pdet3);
+jQuery('#imageos').attr('src',pdet3);
+jQuery('#os_imglight').attr('href',pdet3); });
+jQuery("#mfoto4").click(function(){
+jQuery('#thumbos').attr('src',pdet4);
+jQuery('#imageos').attr('src',pdet4);
+jQuery('#os_imglight').attr('href',pdet4); }); });
+// NUMERA ETAPAS DE COMPRA
+jQuery(document).ready(function(os_etapas){
+var found1 = jQuery("#t0").find(".FC_Opcao");
+var found2 = jQuery("#t1").find(".FC_Opcao");
+//cor e tamanho
+if ((found1.length > 0) && (found2.length > 0)) {
+jQuery("#t0").addClass("etapaum");
+jQuery("#t1").addClass("etapadois");
+jQuery(".gradeComprar").addClass("etapatres");
+}
+//somente cor
+if ((found1.length > 0) && (found2.length < 1)) {
+jQuery("#t0").addClass("etapaum");
+jQuery(".gradeComprar").addClass("etapadois");
+}	
+//somente tamanho
+if ((found1.length < 1) && (found2.length > 0)) {
+jQuery("#t1").addClass("etapaum");
+jQuery(".gradeComprar").addClass("etapadois");
+}
+});
+jQuery(window).load(function() {
+jQuery(".os_Miniaturas").css("height","74px");
+});
+</script>    
+  </div> 
+  <br />
+  <!--dados de compra-->
+  <div class="row3_2">
+    <div class="os_GradeComprar center">
+<Sub>
+<script type="text/javascript">
+os_conta = os_conta + 1;
+bTemSubProds=true;
+var verificaDesc = "<Adicional1Val><CorVal>";
+var sCor="<CorVal>"
+if(sCor!="")sCor=sCor+"|<CorRGB>"
+FC_aSubProd[FC_aSubProd.length]=[[<IDProduto>,"<CodProd>",<Estoque>,"<PrecoOri>","<PrecoNum>","<PesoNum>","<ImagemProdPri>","<ImagemProdDet>","<ImagemProdAmp>",sCor,"<Adicional1Val>","<Adicional2Val>","<Adicional3Val>","<AdicionalD1Val>","<AdicionalD2Val>","<AdicionalD3Val>"]];
+var os_estoque_sub = <Estoque>;
+</script>
+<div id="comprasubproduto" style="display:none; width: 230px" class="os_relativo center"><FormProd><LinkComprar></FormProd></div>
+</Sub>
+<script type="text/javascript">
+if(bTemSubProds && os_conta > 0 && verificaDesc != "") {
+document.write("<div style='width:100%' ><table class='center' border='0' cellspacing='0' cellpadding='0'><tr><td>");
+FC_fInitProd(<IDProduto>);
+document.write("</td></tr></table></div>"); }
+else {
+  if(os_estoque_sub>0) {
+    document.getElementById("comprasubproduto").style.display="block"; }
+  else {
+    document.write("<a href='#E' onclick=MostraDispCaptcha('"+IDLojaNum+"',<IDProduto>);><img src='<BaseLoja>images/BotGridEsgotado.png' border=0></a>");}
+}
+</script>
+<script>
+jQuery(document).ready(function Cesta() {
+	var a = 1;
+	var b = 1;
+	var c = 1;
+	var d = 1;
+	
+	//Numera as linhas (tr) para manipulação.	
+	jQuery("#idTabCrossFC > tbody > tr").each(function (){
+	 jQuery(this).attr('id', 'cross'+a+'');
+	 a++;
+	});	
+
+	jQuery("#cross3 > td > table > tbody > tr").each(function (){
+	 jQuery(this).attr('id', 'lista'+b+'');
+	 b++;
+	});
+	
+	jQuery("#lista1 > td > table > tbody > tr > td").each(function (){
+	 jQuery(this).attr('id', 'l1tr'+c+'');
+	 c++;
+	});
+
+	jQuery("#lista2 > td > table > tbody > tr > td").each(function (){
+	 jQuery(this).attr('id', 'l2tr'+d+'');
+	 d++;
+	});
+		
+		//Esconde os produtos de 3 a 10
+		jQuery("#lista3, #lista4, #lista5, #lista6, #lista7, #lista8, #lista9, #lista10").hide();
+		
+		//Formata o CrossSelling		
+		jQuery("#l1tr1").after("<br />");
+		jQuery("#l1tr1").after("<div id='sep1'><div/>");
+		jQuery("#l2tr1").after("<br />");
+		jQuery("#l2tr1").after("<div id='sep2'><div/>");
+		jQuery("#l1tr2").insertAfter(jQuery("#sep1"));
+		jQuery("#l2tr2").insertAfter(jQuery("#sep2"));
+		jQuery("#lista2, #lista1").css("float", "left");
+		jQuery("#lista2 > td, #lista1 > td").css("border", "1px solid #ccc");
+		jQuery("#lista2 > td, #lista1 > td").css("width", "130px");
+		jQuery("#lista2 > td, #lista1 > td").css("height", "170px");
+
+		//Formata o tamanho do nome do produto.
+		jQuery("#l1tr2 .AdicItem a,#l2tr2 .AdicItem a").text(function(index, text) {
+		    return text.substr(0, 15)+"...";
+		});			
+		
+});
+</script>
+
+
+    <div class="osp_parcela"><script>MostraMaxParcelaDetalhe(<PrecoNum>,<MaxParcelasProdNum>);</script></div>
+	<div class="osp_economia"><div class="center" style="width:300px;text-align: center;"><script>MostraEconomia(<PrecoNum>,<PrecoOri>);</script></div></div>
+    <div class="osp_price" id="PrecoProdPrinc"><div class="center" style="width:300px;text-align: center;">ou à vista&nbsp;<PrecoSimples></div></div>
+
+    </div>
+    <div class="os_extras" style="border:0">
+	    <div class="center" style="width:300px;text-align: center;">
+      	<AdicionalD1>
+	      <AdicionalD2>
+		  </div>	      
+    </div>
+   </br>
+  <div id="fc-detalhe-desc">
+		<div class="fc-detalhe-tit center">DESCRI&Ccedil;&Atilde;O</div>	  
+		<div class="center"><Descricao><DescrHTM></div>	  
+  </div>
+  <div id="fc-detalhe-quem">
+		<div class="fc-detalhe-tit center">QUEM VIU, VIU TAMB&Eacute;M</div>	  
+		<div class="center"><CrossSelling></div>	  
+  </div>
+  </div>  
+  <div class="clear"></div>
+</div>
+
+
+
+
+
+
+
+<!--fim produto-->
+</ProdDet>
+
+
+
+
+<ProdAmp>
+<div id="idProdAmpMobileFC" align="center"><ImagemProd></div>
+<style type="text/css">#idProdAmpMobileFC .EstImgFC{width:300px;}</style>
+</ProdAmp>
+
+<ProdBottom>
+<script type="text/javascript">
+    //try{document.getElementById("idFoundFC").style.padding='0px 0px 15px 10px';}catch(e){}
+    //try{document.getElementById("idPageCountFC").style.padding='0px 0px 15px 0px';}catch(e){}
+</script>
+</ProdBottom>
