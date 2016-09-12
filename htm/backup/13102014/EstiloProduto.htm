@@ -1,0 +1,773 @@
+<ProdTop>
+<style type="text/css">
+#idFoundFC, #idPageCountFC, .Titulos, #idTitPagFC, #idEstTDTitProdCrossFC, hr.EstLinhaProd, #idBRListaProdFC { display:none}
+.tabs { width:930px !important; margin:0 10px !important }
+.tab_container {width:930px !important; height:auto !important; margin:0 10px !important}
+.tab_content2 { padding:15px}
+.EstFotoProdCross {width: auto !important;height: 100px !important;}
+.os_filtro li.pad, #idPathSearchTextEmptyFC { display:none !important}
+#idUlPathSearchCatFC li, #idPathSearchAdic1FC, #idPathSearchSaleFC, #idPathSearchAdic2FC { display:block}
+#idulpathsearchfc li { display:block}
+.os_filtrado, .os_f_limpar, .os_f_busca {margin-left: 20px;}
+.n_indique a {font-size: 13px;color: #666 !important;}
+.os_f_busca a { text-decoration:underline; color:#333; font-weight:bold;}
+.os_f_busca a:hover { text-decoration:none; color:#FF283A}
+</style>
+<script>
+function CartProd(ProdID,FormNum){
+  if(FormNum==0)var oForm=eval("Form"+ProdID);
+  else var oForm=eval("FCForm"+FormNum);
+  if(oForm==undefined)Adicional1=Adicional2=Adicional3=AdicionalD1=AdicionalD2=AdicionalD3=Cor="";
+  else{
+    Adicional1=GetAdicProd("Adicional1",oForm);
+    Adicional2=GetAdicProd("Adicional2",oForm);
+    Adicional3=GetAdicProd("Adicional3",oForm);
+    Cor=GetAdicProd("Cor",oForm);
+  }
+  var sParams="";
+  sParams+="&QTIncMult_"+ ProdID +"=1";
+  if(Adicional1!='')sParams+="&Adicional1_"+ ProdID +"="+ EncodeParamFC(Adicional1);
+  if(Adicional2!='')sParams+="&Adicional2_"+ ProdID +"="+ EncodeParamFC(Adicional2);
+  if(Adicional3!='')sParams+="&Adicional3_"+ ProdID +"="+ EncodeParamFC(Adicional3);
+  if(Cor!='')sParams+="&Cor_"+ ProdID +"="+ EncodeParamFC(Cor);
+  return sParams;
+}
+</script>
+<script>
+function MostraMaxParcela(PrecoProd,MaxParcelas){
+  var ComSem;
+  if(PrecoProd>=15)MaxParcelas=3;
+  else if(PrecoProd>=1)MaxParcelas=1;
+  if(PrecoProd==0||MaxParcelas==1||Juros.length==0)return;
+  if(MaxParcelas==0||MaxParcelas>Juros.length)MaxParcelas=Juros.length;
+  if(Juros[MaxParcelas-1]>0)ComSem=""; else ComSem="&nbsp;sem&nbsp;juros</font>";
+  document.write("<b>"+MaxParcelas+"x</b>"+ComSem+" de&nbsp;<b>"+FormatPrecoReais(CalculaParcelaJurosCompostos(PrecoProd,MaxParcelas))+"</b>");
+}
+
+function MostraMaxParcelaDetalhe(PrecoProd,MaxParcelas){
+  var ComSem;
+  if(PrecoProd>=15)MaxParcelas=3;
+  else if(PrecoProd>=1)MaxParcelas=1;
+  if(PrecoProd==0||MaxParcelas==1||Juros.length==0)return;
+  if(MaxParcelas==0||MaxParcelas>Juros.length)MaxParcelas=Juros.length;
+  if(Juros[MaxParcelas-1]>0)ComSem=""; else ComSem="&nbsp;sem&nbsp;juros</font>";
+  document.write(MaxParcelas+"x</b>"+ComSem+"&nbsp;de&nbsp;<b>"+FormatPrecoReais(CalculaParcelaJurosCompostos(PrecoProd,MaxParcelas))+"</b>");
+}
+</script>
+<script>
+function MostraIndique(IDLoja,IDProduto){
+  popup=window.open("IndiqueProduto.asp?IDLoja="+IDLoja+"&IDProduto="+IDProduto,"Indique","top=10,left=10,height=450,width=423,scrollbars=no");
+  popup.focus();
+  return void(0);
+}
+function IndicaProd(IDProduto){
+document.write("<a href='javascript:MostraIndique(343,"+IDProduto+")'>Indique esse produto</a>");
+}
+</script>
+
+<script>
+function MostraEconomia(PrecoProd,PrecoOri){
+if(PrecoProd!=PrecoOri)document.write("<br><font color=#6f9e45>Economize <strong>"+FormatPrice(PrecoOri-PrecoProd,'R$')+"</strong> ("+FormatNum(((PrecoOri-PrecoProd)/PrecoOri)*100)+"%)</font>");
+}
+
+function FormatNum(num){
+num=num.toString().replace(/\$|\,/g,'');
+if(isNaN(num))num="0";
+sign=(num==(num=Math.abs(num)));
+num=Math.floor(num*100+0.50000000001);
+num=Math.floor(num/100).toString();
+for(var i=0;i<Math.floor((num.length-(1+i))/3);i++)num=num.substring(0,num.length-(4*i+3))+'.'+num.substring(num.length-(4*i+3));
+return ((sign)?'':'-')+num;
+}
+</script>
+<script>
+var bDet=false;
+</script>
+
+<div class="row1_1" style="padding:10px 0;" id="exc_categorias">
+  <div class="row2_1">
+  <!--filtro-->
+    <div class="os_filtro">
+	  <h2>Listando por: </h2>
+	  <div class="os_filtrado"><ListPathSearch></div>
+	  <div class="os_f_limpar"><a href="/prod,idloja,<IDLoja>"><img src="<BaseLoja>images/layout/ico_limpar.png" width="104" height="40"></a></div>
+	  <div class="os_f_busca"><LinkAdvancedSearch></div>
+	  <div class="os_f_separa"></div>
+      <h2 style="margin-bottom:-8px">Refinar sua busca:</h2>      
+      <span class="filtroCat"><NomeCat></span>
+      <div id="idListaProdCategoriasFC">
+        <h3>DEPARTAMENTO</h3>
+        <div class="os_grpFiltro"><ListPathCatQt></div>
+      </div>
+      <div id="idListaProdAdicional1FC">      
+        <h3><NomeAdicional1></h3>
+        <div class="os_grpFiltro"><ListAdic1Qt></div>
+      </div>
+      <div id="idListaProdAdicional2FC">
+        <h3><NomeAdicional2></h3>
+        <div class="os_grpFiltro"><ListAdic2Qt></div>
+      </div>
+      <div id="idListaProdAdicional3FC">
+        <h3><NomeAdicional3></h3>
+        <div class="os_grpFiltro"><ListAdic3Qt></div>
+      </div>            
+    </div>
+    <div class="os_buscaDetalhada">
+      <h2>Busca Detalhada</h2>
+      <div class="bdet">
+      <form id="form1" name="form1" method="get" action="/ListaProdutos.asp">
+        <input type="hidden" name="IDLoja" id="IDLoja" value="343" />
+        <input type="hidden" name="Avancada" id="Avancada" value="True" />
+        <input type="hidden" name="Digitada" id="Digitada" value="True" />
+        <input type="hidden" name="texto" id="texto" value="" />
+        <input type="hidden" name="Any" id="Any" value="False" />
+        <span class="bdet_legenda">
+          <label for="Departamento">Departamento</label>
+          <select name="IDCategoria" id="IDCategoria" class="bdet_txt">          
+            <option value="186250">Acess&oacute;rios</option>
+            <option value="186251">Brincadeiras e Jogos</option>
+            <option value="186252">Cosm&eacute;ticos</option>
+            <option value="186257">Filmes</option>
+            <option value="2816">Infl&aacute;veis</option>
+            <option value="186253">Lingeries</option>
+            <option value="186284">Masturbadores</option>
+            <option value="186278">Para Presentear</option>
+            <option value="186255">Pênis</option>
+            <option value="186279">Preservativos</option>
+            <option value="186280">Sado/Fetiches</option>
+            <option value="186256">Vibradores</option>
+          </select>
+        </span>
+        <span class="bdet_legenda">
+          <label for="Departamento">Faixa de pre&ccedil;o</label>
+          de <input type="text" name="PrecoDe" id="PrecoDe" value="" size="5" maxlength="8" class="bdet_txt"> 
+          at&eacute; <input type="text" name="PrecoAte" id="PrecoAte" value="" size="5" maxlength="8" class="bdet_txt">
+        </span>
+        <span class="bdet_legenda">
+          <input type="checkbox" name="Promocao" id="Promocao" value="True">
+          Apenas promo&ccedil;&otilde;es 
+        </span> 
+        <span class="bdet_legenda">
+        <input type="checkbox" name="Lancamento" id="Lancamento" value="True">
+          Apenas lan&ccedil;amentos        </span>
+        <span class="bdet_legenda">
+          <input type="submit" name="button" id="button" value="Submit" class="os_bt" />
+        </span>
+      </form>
+      </div>
+    </div>
+    <div class="os_eDepartamentos">
+     <h2>Todos departamentos</h2>
+      <!--<a href="http://www.lojadoprazer.com.br/natal" class="natal"><img src="<BaseLoja>images/banner_natal_lateral.gif" border="0"></a><BR><BR>-->
+	  <ul>
+
+		<li><a href="/prod,idloja,<IDLoja>,IDCategoria,186250,acessorios-eroticos">Acess&oacute;rios</a>
+		  <ul>
+		  	<li><a href="/prod,idloja,<IDLoja>,IDCategoria,2065,acessorios-femininos">Acess&oacute;rios Femininos</a></li>
+				<li><a href="/prod,idloja,<IDLoja>,IDCategoria,2059,aneis-penianos">An&eacute;is Penianos</a></li>
+				<li><a href="/prod,idloja,<IDLoja>,IDCategoria,9613,capas-penianas-e-extensores">Capas Penianas e Extensores</a></li>
+				<li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2149,bombas-penianas">Desenvolvedores Penianos</a></li>
+				<li class="last"><a href="/prod,idloja,<IDLoja>,IDCategoria,186250,acessorios-eroticos"><b>+ Veja Mais</b></a></li>
+    	</ul>
+		</li>
+		</li>
+		
+        <li><a href="/prod,idloja,<IDLoja>,IDCategoria,186252,cosmeticos">Cosm&eacute;ticos</a>
+		  <ul>
+		    <li><a href="/prod,idloja,<IDloja>,avancada,true,digitada,true,texto,kamashastra"><strong>Cole&ccedil;&atilde;o KamaShastra</strong></a></li>		  
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,117200,gel-para-sexo-anal">Gel para Sexo Anal</a></li>
+            <li><a href="/prod,idloja,<IDLoja>,IDCategoria,117203,gel-do-beijo">Gel do Beijo</a></li>
+            <li><a href="/prod,idloja,<IDLoja>,IDCategoria,117204,gel-feminino">Gel Feminino</a></li>
+            <li><a href="/prod,idloja,<IDLoja>,IDCategoria,117205,gel-masculino">Gel Masculino</a></li>
+            <li><a href="/prod,idloja,<IDLoja>,IDCategoria,117201,gel-retardante">Gel Retardante</a></li>
+            <li><a href="/prod,idloja,<IDLoja>,IDCategoria,2079,lubrificantes">Lubrificantes</a></li>
+            <li><a href="/prod,idloja,<IDLoja>,IDCategoria,127159,velas-para-massagem">Velas para Massagem</a></li>
+			<li class="last"><a href="/prod,idloja,<IDLoja>,IDCategoria,186252,cosmeticos"><b>+ Veja Mais</b></a></li>
+		  </ul>
+		</li>
+        
+		  <ul>
+		    <li><a href="/prod,idloja,<IDLoja>,IDCategoria,186120,fantasias-com-peruca">Fantasias com Peruca</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,2110,fantasias-femininas">Fantasias Femininas</a></li>
+			<li class="last"><a href="/prod,idloja,<IDLoja>,IDCategoria,126760,fantasias-masculinas">Fantasias Masculinas</a></li>
+		  </ul>
+		</li>
+        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,71295,blu-ray-hetero-importado">Filmes em Blu-ray</a></li>
+        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2834,dvd-hetero-importado">Filmes em DVD H&eacute;tero</a></li>
+        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,8709,dvd-gay-nacional">Filmes em DVD Gay</a></li>
+        <li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,loving+sex">Cole&ccedil;&atilde;o Loving Sex</a></li>                
+        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2816,bonecas-inflaveis">Infl&aacute;veis</a></li>
+       		
+		
+		<li><a href="/prod,idloja,<IDLoja>,idcategoria,186253,lingeries-eroticas">Lingeries Er&oacute;ticas</a>
+		  <ul>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,177907,baby-dolls">Baby Dolls</a></li>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,2090,bodies">Bodies</a></li>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,2091,calcinha-fil-dental">Calcinhas Fio Dental</a></li>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,177908,camisolas">Camisolas</a></li>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,2100,conjuntos-sensuais">Conjuntos Sensuais</a></li>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,4946,cuecas-eroticas">Cuecas Er&oacute;ticas</a></li>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,2099,espartilho">Espartilhos</a></li>
+        <li class="seta"><a href="/prod,idloja,<IDLoja>,idcategoria,186253,produtos,20,order,1,avancada,1,adicional2,64072">Especial para Noivas</a></li>		    
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,140608,macacoes-sensuais">Macac&otilde;es Sensuais</a></li>
+		    <li><a href="/prod,idloja,<IDLoja>,idcategoria,13580,vestidos-sensuais">Vestidos Sensuais</a></li>
+			<li class="last"><a href="/prod,idloja,<IDLoja>,idcategoria,186253,lingeries-eroticas"><b>+ Veja Mais</b></a></li>
+		  </ul>
+		</li>
+        <li><a href="/prod,idloja,<IDLoja>,IDCategoria,186278,para-presentear">Para Presentear</a></li>
+
+        <li><a href="/prod,idloja,<IDLoja>,IDCategoria,186255,penis-realisticos">Pênis Real&iacute;sticos</a>
+		  <ul>
+		  	<li><a href="/prod,idloja,<IDLoja>,IDCategoria,37013,penis-importados">Pênis Importados</a></li>
+				<li><a href="/prod,idloja,<IDLoja>,IDCategoria,37011,penis-importados-vibro">Pênis Importados com Vibro</a></li>
+				<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118907,penis-ate-12cm">Pênis at&eacute; 12cm</a></li>
+				<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118908,penis-13-a-15cm">Pênis 13 a 15cm</a></li>
+				<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118900,penis-13-a-15cm-com-vibro">Pênis 13 a 15cm com Vibro</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118909,penis-16-a-18cm">Pênis 16 a 18cm</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118901,penis-16-a-18cm-com-vibro">Pênis 16 a 18cm com Vibro</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118910,penis-19-a-21cm">Pênis 19 a 21cm</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118902,penis-19-a-21cm-com-vibro">Pênis 19 a 21cm com Vibro</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118911,penis-22-a-24cm">Pênis 22 a 24cm</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118903,penis-22-a-24cm-com-vibro">Pênis 22 a 24cm com Vibro</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118912,penis-acima-de-25cm">Pênis acima de 25cm</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118904,penis-acima-de-25cm-vibro">Pênis acima de 25cm Vibro</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,118913,penis-duplo">Pênis Duplo</a></li>
+			<li class="last"><a href="/prod,idloja,<IDLoja>,IDCategoria,118906,penis-duplo-com-vibro">Pênis Duplo com Vibro</a></li>
+		  </ul>
+		</li>
+        <li><a href="/prod,idloja,<IDLoja>,IDCategoria,186279,preservativos">Preservativos (Camisinhas)</a>
+		  <ul>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,218904,preservativos-durex">Preservativos Durex</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,186087,preservativos-jontex">Preservativos Jontex</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,117915,preservativos-olla">Preservativos Olla</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,117916,preservativos-prudence">Preservativos Prudence</a></li>
+			<li class="last"><a href="/prod,idloja,<IDLoja>,IDCategoria,2073,outros-preservativos">Outros Preservativos</a></li>
+		  </ul>
+		</li>
+        <li><a href="/prod,idloja,<IDLoja>,IDCategoria,186280,sado-e-fetiches">Sado e Fetiches</a>
+		  <ul>
+		    <li><a href="/prod,idloja,<IDLoja>,IDCategoria,18824,acessorios-sado">Acess&oacute;rios Sado</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,147833,algemas">Algemas</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,147835,aneis-penianos-sado">Anéis Penianos Sado</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,147837,arreios-sado">Arreios Sado</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDcategoria,147838,chibatas---chicotes">Chibatas e Chicotes</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,177985,coleiras---mordacas">Coleiras e Mordaças</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,147840,kits-bondage">Kits Bondage</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,157903,pesos-de-aco-para-escroto">Pesos de A&ccedil;o para Escroto</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,147839,prendedores-de-mamilos">Prendedores de Mamilos</a></li>
+			<li><a href="/prod,idloja,<IDLoja>,IDCategoria,147834,vendas---capuz---mascaras">Vendas, Capuz e M&aacute;scaras</a></li>
+			<li class="last"><a href="/prod,idloja,<IDLoja>,IDCategoria,91271,vestuario-de-latex">Vestu&aacute;rio de L&aacute;tex</a></li>
+		  </ul>
+		</li>
+        <li><a href="/prod,idloja,<IDLoja>,idcategoria,186256,vibradores">Vibradores</a>
+				  <ul>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,228564,calcinhas-com-vibrador">Calcinhas com Vibrador</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2084,capsulas-bullets">Cápsulas/Bullets</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,175759,vibradores-classicos">Clássicos/Personal</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,228565,com-cinta-butterflies">Com Cinta/Butterflies</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2086,estimulacao-dupla">Estimulação Dupla</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2085,estimulo-do-clitoris">Estímulo do Clitóris</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118123,vibradores-rotativos">Rabbits/Rotativos</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,228622,vibradores-femininos">Vibradores Femininos</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,228529,vibradores-para-casal">Vibradores para Casal</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,12040,vibradores-ponto-g">Vibradores Ponto G</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDCategoria,160330,higienizador-para-vibradores">Higienizadores de Vibrador</a></li>				  
+		      </ul>
+      </li>
+      	<br />
+        <li><a href="#">Os + Filtrados</a>
+				  <ul>	
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,brilha+escuro,IDCategoria,186256">Brilha no Escuro</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,controle+remoto+sem+fio,IDCategoria,186256">Controle Remoto sem Fio</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,disfarcados,IDCategoria,186256">Discretos/Disfarçados</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,aluminio,IDCategoria,186256">Feitos em Alumínio</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,ceramica,IDCategoria,186256">Feitos em Cerâmica</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,recarregaveis,IDCategoria,186256">Recarregáveis</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,resistente+a+agua,IDCategoria,186256">Resistente à Água</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,silicone+medico,IDCategoria,186256">Silicone Médico</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,shock+therapy">Terapia do Choque</a></li>		  
+		      </ul>
+      </li>
+      <br />
+       <li><a href="#">Marcas + Desejadas:</a>
+				  <ul>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,adrien+lastic">Adrien Lastic</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,bswish">B Swish</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,IDProduto,3897764,vibradores-vibradores-ponto-g-vibrador-de-silicone-com-ponta-dupla-g-vibe">G Vibe</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,pipedream">Pipedream</a></li>
+		        <li><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,rocks+off">Rocks Off</a></li>
+		        <li class="last"><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,Standard+Innovation">We-Vibe</a></li>		  
+		      </ul>
+      </li>
+   </div>
+    <div class="os_eDepartamentos">
+			
+			<ul>
+			<li><h2>Compre por Marcas</h2>  
+			  <ul>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,cinquenta+tons+de+cinza"><b>50 Tons de Cinza</b> (<i>Coleção Oficial</i>)</a></li> 
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,adrien+lastic"><b>Adrien Lastic</b> (<i>Design Sofisticado</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,baci"><b>Baci</b> (<i>O Luxo Acessível</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,bathmate"><b>Bathmate</b> (<i>Aumente seu Pênis</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,blush"><b>Blush</b> (<i>Acessórios de Luxo</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,b+swish"><b>Bswish</b> (<i>Acessórios Chiques</i>)</a></li>
+					<!--<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,closet"><b>Closet Collection</b> (<i>Fashion e Moderno</i>)</a></li>-->
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,durex"><b>Durex</b> (<i>Descubra o Sexo Incrível</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,espiral"><b>Espiral</b> (<i>Roupas Sensuais</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,fantasy+lingerie"><b>Fantasy Lingerie</b> (<i>Simples e Provocante</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,glamour"><b>Glamour</b> (<i>Lingeries Glamurosas</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,Ponta+Dupla+G-vibe"><b>G-Vibe</b> (<i>Melhor Ponto G do Mundo</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,hott+products"><b>Hott Products</b> (<i>Acessórios Quentes</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,kamashastra"><b>KamaShastra</b> (<i>Cosméticos Luxuosos</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,kayo+valentin"><b>Kayo Valetin</b> (<i>Aumente a Temperatura</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,magic+silk"><b>Magic Silk Lingerie</b> (<i>Qualidade USA</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,nasstoys"><b>Nasstoys</b> (<i>Tradição desde 1978</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,perfect+fit"><b>PerfectFit Brand</b> (<i>Prazer Masculino</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,pink+lipstick"><b>Pink LipStick Loungewear</b> (<i>Elegância</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,pipedream"><b>Pipedream</b> (<i>Sem Limites para Fetiche</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,relax+intimate"><b>RelaxIntimate</b> (<i>Especialista em Prazer</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,rene+rofe"><b>René Rofé Lingerie</b> (<i>O Novo Sexy</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,rocks+off"><b>Rocks-Off</b> (<i>Agite seu Prazer</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,sexy+fantasy"><b>Sexy Fantasy</b> (<i>Sua Vida com + Prazer</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,screaming"><b>The Screaming O</b> (<i>Amantes Essenciais</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,Standard+Innovation"><b>We-Vibe</b> (<i>Divida o Prazer</i>)</a></li>
+					<li><a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,zolo+pocket+pool"><b>Zolo</b> (<i>Prazer Solo</i>)</a></li> 
+				</ul>
+			</li>
+			</ul>
+			
+    </div>   
+    <br/>
+	  <a href="http://goo.gl/hxF3Pq"><img src="<BaseLoja>images/BannerDurex250.jpg"></a>
+    <br/> 
+    <br/> 
+	  <!--<a href="/prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,power+shock"><img src="<BaseLoja>images/BannerShock.gif"></a>
+    <br/> 
+    <br/> -->
+
+</div>  
+<script>
+AjustaFiltros();
+var iQtdProds=<QtProd>;
+</script>
+  <div class="row2_2" style="border:1px solid #D8D8D8; padding-bottom:10px">
+    <h3 style="display:none">Produtos</h3>
+    <div class="os_cbLista">
+      <div class="os_bradcumb"><a href="home.asp?IDLoja=<IDLoja>" class="PathIni">Início > </a><PathCat></div>
+      <div class="fc-prod-qtd">(<QtProd>) Produtos</div>
+      <div class="os_ordena">
+<script>
+//Ordenação
+var sPag=document.location.href.toUpperCase();
+if(sPag.indexOf("/PROD,")==-1){sConcat="&";sCharSep="=";} else {sConcat=",";sCharSep=",";}
+if((sPag.indexOf("&DET=")==-1 && sPag.indexOf("&IDPRODUTO=")==-1) && (sPag.indexOf(",DET,")==-1 && sPag.indexOf(",IDPRODUTO,")==-1)){
+  document.write("<select id=OrderProd class=smSelect onchange=NewOrder()>");
+  document.write("<option value=-1>Ordenar por</option>");
+  //document.write("<option value=0>Padrão</option>");
+  document.write("<option value=1>Lançamentos</option>");
+  //document.write("<option value=2>Destaques</option>");
+  //document.write("<option value=3>Nomes das categorias</option>");
+  document.write("<option value=4>Nomes dos produtos</option>");
+  //document.write("<option value=5>Avaliações dos clientes</option>");
+  document.write("<option value=6>Promoções</option>");
+  document.write("<option value=7>Preços menores</option>");
+  document.write("<option value=8>Preços maiores</option>");
+  document.write("</select>");
+  var oOrder=document.getElementById('OrderProd');
+  var posOrder=sPag.indexOf("ORDER"+sCharSep);
+  if(posOrder!=-1){
+    var iOrderCurrent=sPag.substr(posOrder+6,1);
+    if(!isNaN(iOrderCurrent))if(iOrderCurrent>=0){
+      var i=0;
+      while(i<oOrder.length && oOrder.options[i].value!=iOrderCurrent)i++;
+      if(i<oOrder.length)oOrder.selectedIndex=i;
+    }
+  }
+}
+
+function NewOrder(){
+  var iOrder=oOrder.options[oOrder.selectedIndex].value;
+  if(iOrder>=0){
+    if(posOrder!=-1){document.location.href=document.location.href.replace(new RegExp('order'+sCharSep+iOrderCurrent),'order'+sCharSep+iOrder);}
+    else{document.location.href=document.location.href.replace(new RegExp('idloja'+sCharSep+IDLojaNum,'gi'),'idloja'+sCharSep+IDLojaNum+sConcat+'order'+sCharSep+iOrder);}
+  }
+}
+</script>  
+      </div>
+    </div>
+</ProdTop>
+
+<ProdLista>
+<script>
+jQuery(document).ready(function() {
+ var a = 1;
+ jQuery(".EstPathCat li").each(function (){
+	 jQuery(this).attr('id','Path'+a+'');
+	  a++;
+ });
+ 
+ jQuery("#Path3 a").attr("href","#");
+});
+
+function MostraFreteGratisLista(iPeso){
+  if(iPeso==0){document.write("<div class='fc_verMais_lista'><a href='/prod,idloja,<IDLojaNum>,idproduto,<IDProduto>,<NomeProdUA>'>VER MAIS |&nbsp;</a></div><div id='fc-frete-lista'>FRETE GRÁTIS</div>");
+	  }else{document.write("<div class='fc_verMais'><a href='/prod,idloja,<IDLojaNum>,idproduto,<IDProduto>,<NomeProdUA>'>VER MAIS</a></div>");}
+}	
+</script>
+<div class="fc_hProd">
+  <div><a href="/prod,idloja,<IDLoja>,idproduto,<IDProduto>,<NomeProdUA>" class="ProductName"><ImagemProd></a></div>
+  <h3 class="name"><a href="/prod,idloja,<IDLoja>,idproduto,<IDProduto>,<NomeProdUA>" class="ProductName"><NomeProd>&nbsp;-&nbsp;Ref: <CodProd></a></h3>
+  <div class="price"><PrecoSimples></div>
+  <div class="parcela"><script>MostraMaxParcela(<PrecoNum>,<MaxParcelasProdNum>);</script><script>MostraEconomia(<PrecoNum>,<PrecoOri>);</script></div>
+  <div class="category">+ <NomeCat></div>
+  <!--<div class="fc_verMais"><LinkDet></div>-->
+  <script>MostraFreteGratisLista("<PesoNum>");</script>
+</div>
+</ProdLista>
+
+<ProdDet>
+<!--fecha segunda coluna em produtos-->
+</div>
+<!--fecha linha em produtos-->
+</div>
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?8hUx9OhqQTRjjSbj10mIp91kWBuDfteF';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
+<style type="text/css">
+#toTop {bottom:140px;}
+#exc_categorias, exc_categorias2 { display:none !important }
+</style>
+<script type="text/javascript">
+//Seleciona o primeiro item da grade se houver apenas 1 opcao.
+jQuery(function(){
+	jQuery(window).load(function() {
+		var countCor=jQuery('#t0 .FC_Opcao').length;
+		var countTamanho=jQuery('#t1 .os_radio').length;
+		if (countCor == 1)jQuery("#t0 .FC_Opcao:first").trigger('click');
+		if (countTamanho == 1)jQuery("#t1 .estOpcaotrue:first").trigger('click');
+  });    
+});
+</script>
+<link rel="stylesheet" href="<Baseloja>htm/jquery_fancybox.css?v=2.1.4" type="text/css" media="all">
+<script src="<Baseloja>htm/js/jquery_fancybox.js?v=2.1.4" type="text/javascript"></script>
+<Xlink rel="stylesheet" href="<Baseloja>htm/fancybox.css" type="text/css" media="all">
+<Xscript src="<Baseloja>htm/js/fancybox_min.js" type="text/javascript"></script>
+<script src="<Baseloja>htm/FC_Grid.js" type="text/javascript"></script>
+<script src="<Baseloja>htm/js/imageZoom_v3.js" type="text/javascript"></script>
+<script src="<Baseloja>htm/encoder.js" type="text/javascript"></script>
+<script type="text/javascript">
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+MM_preloadImages('/lojas/00000343/images/loadingComprar.gif');
+</script>
+<script type="text/javascript">
+var FC_aSubProd=new Array();
+var bDet=true;
+var bTemSubProds=false;
+var PrecoProdPaiOri=<PrecoOri>
+var PrecoProdPaiNum=<PrecoNum>
+var os_conta = 0;
+</script>
+<!--inicio produto-->
+<div id="ponto-rolagem"></div>
+<div class="row1_1"style="padding:10px 0">
+<!--dados do produto-->
+<div class="row1_1" style="padding:10px 0; height:30px">
+  <div style="padding-left:10px">
+  <div><span class="cont_bread"><a href="http://www.lojadoprazer.com.br">Início</a></span>
+	<span class="sem_hifen"><a href="http://www.lojadoprazer.com.br">&nbsp;>&nbsp;&nbsp;</a></span></div></div><PathCat>
+
+</div>
+  <!--foto-->
+  <div class="row3_1">
+    <div class="os_imgDetalhes">
+      <img src="<ImagemProdAmp>" id="thumbos" />      
+    </div>
+    <div id="container_image" class="ezoom">
+      <img src="<ImagemProdAmp>" id="imageos">
+    </div>   
+    
+    
+<script type="text/javascript">
+//lightbox
+jQuery.noConflict();
+jQuery(document).ready(function(jQuery) {
+jQuery("a#os_imglight").fancybox({
+	arrows: false
+});
+});
+</script>
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function movimento() {
+
+jQuery('html,body').animate({
+	scrollTop: jQuery("#ponto-rolagem").offset().top}, 1000);
+
+});
+</script>	
+	
+</script>
+
+<script type="text/javascript">
+//variacao
+function verificamini(img){
+img.onerror=null;
+document.getElementById('os_Miniaturas').style.display = 'none'; }
+function trataErroImagem(img){
+img.onerror=null;
+img.style.display = 'none'; }
+pdet  = "<ImagemProdAmp>";
+pdet2jpg = pdet.replace(/.jpg/gi, "_2.jpg");
+pdet3jpg = pdet.replace(/.jpg/gi, "_3.jpg");
+pdet4jpg = pdet.replace(/.jpg/gi, "_4.jpg");
+pdet2png = pdet2jpg.replace(/.png/gi, "_2.png");
+pdet3png = pdet3jpg.replace(/.png/gi, "_3.png");
+pdet4png = pdet4jpg.replace(/.png/gi, "_4.png");
+pdet2 = pdet2png.replace(/.gif/gi, "_2.gif");
+pdet3 = pdet3png.replace(/.gif/gi, "_3.gif");
+pdet4 = pdet4png.replace(/.gif/gi, "_4.gif");
+document.write("<div class='os_BtAmpliar'><div class='b_passemouse'><b>Passe o mouse na imagem</b> para dar zoom</div>");
+document.write('<div class="b_lightbox"><a href="<ImagemProdAmp>" id="os_imglight"><img src="<BaseLoja>images/layout/icoAmpliar.png" width="30" height="30" /></a></div><div class="b_hd"><DescrURL></div></div>');
+document.write("<div class='os_Miniaturas' id='os_Miniaturas' style='display:block'>");
+document.write("<img id='mfoto1' onerror='trataErroImagem(this)' src='"+ pdet +"' width='68' height='68'>");
+document.write("<img id='mfoto2' onerror='verificamini(this)' src='"+ pdet2 +"' width='68' height='68'>");
+document.write("<img id='mfoto3' onerror='trataErroImagem(this)' src='"+ pdet3 +"' width='68' height='68'>");
+document.write("<img id='mfoto4' onerror='trataErroImagem(this)' src='"+ pdet4 +"' width='68' height='68'>");
+document.write("</div>");
+
+//zoom
+jQuery(document).ready(function(){
+jQuery('#thumbos').mouseover(function(){
+     jQuery("#container_image").addClass("mzoom");
+     jQuery("#container_image").removeClass("ezoom");
+//	 jQuery("#container_image").hide();	 
+	 jQuery(".os_redes").css("display","block");
+         jQuery("#comprasubproduto").removeClass("os_relativo");
+	 jQuery("#EstTabBotComprar").removeClass("os_relativo");
+	 jQuery("#thumbos").addClass("bgFoto");
+   }).mouseout(function(){
+     jQuery("#container_image").removeClass("mzoom");
+     jQuery("#container_image").addClass("ezoom");
+	 jQuery(".os_redes").css("display","block");         
+	 jQuery("#comprasubproduto").addClass("os_relativo");
+	 jQuery("#EstTabBotComprar").addClass("os_relativo");
+         jQuery("#thumbos").removeClass("bgFoto");
+   });
+ // alterna foto
+jQuery("#mfoto1").click(function(){
+jQuery('#thumbos').attr('src',pdet);
+jQuery('#imageos').attr('src',pdet);
+jQuery('#os_imglight').attr('href',pdet); });
+jQuery("#mfoto2").click(function(){
+jQuery('#thumbos').attr('src',pdet2);
+jQuery('#imageos').attr('src',pdet2);
+jQuery('#os_imglight').attr('href',pdet2); });
+jQuery("#mfoto3").click(function(){
+jQuery('#thumbos').attr('src',pdet3);
+jQuery('#imageos').attr('src',pdet3);
+jQuery('#os_imglight').attr('href',pdet3); });
+jQuery("#mfoto4").click(function(){
+jQuery('#thumbos').attr('src',pdet4);
+jQuery('#imageos').attr('src',pdet4);
+jQuery('#os_imglight').attr('href',pdet4); }); });
+// NUMERA ETAPAS DE COMPRA
+jQuery(document).ready(function(os_etapas){
+var found1 = jQuery("#t0").find(".FC_Opcao");
+var found2 = jQuery("#t1").find(".FC_Opcao");
+//cor e tamanho
+if ((found1.length > 0) && (found2.length > 0)) {
+jQuery("#t0").addClass("etapaum");
+jQuery("#t1").addClass("etapadois");
+jQuery(".gradeComprar").addClass("etapatres");
+}
+//somente cor
+if ((found1.length > 0) && (found2.length < 1)) {
+jQuery("#t0").addClass("etapaum");
+jQuery(".gradeComprar").addClass("etapadois");
+}	
+//somente tamanho
+if ((found1.length < 1) && (found2.length > 0)) {
+jQuery("#t1").addClass("etapaum");
+jQuery(".gradeComprar").addClass("etapadois");
+}
+});
+jQuery(window).load(function() {
+jQuery(".os_Miniaturas").css("height","74px");
+});
+</script>    
+  </div> 
+
+  <!--dados de compra-->
+  <div class="row3_2">
+     <div class="osp_lancamento"><Lancamento></div>
+   	<div class="osp_name"><NomeProd></div>
+    <div class="osp_referencia">Referência: <CodProd></div>
+    <div class="osp_parcela"><script>MostraMaxParcelaDetalhe(<PrecoNum>,<MaxParcelasProdNum>);</script></div>
+	<div class="osp_economia"><script>MostraEconomia(<PrecoNum>,<PrecoOri>);</script>
+</div>
+    <div class="osp_price" id="PrecoProdPrinc">ou à vista&nbsp;<PrecoSimples></div>
+
+
+    <div class="os_GradeComprar">
+<Sub>
+<script type="text/javascript">
+os_conta = os_conta + 1;
+bTemSubProds=true;
+var verificaDesc = "<Adicional1Val><CorVal>";
+var sCor="<CorVal>"
+if(sCor!="")sCor=sCor+"|<CorRGB>"
+FC_aSubProd[FC_aSubProd.length]=[[<IDProduto>,"<CodProd>",<Estoque>,"<PrecoOri>","<PrecoNum>","<PesoNum>","<ImagemProdPri>","<ImagemProdDet>","<ImagemProdAmp>",sCor,"<Adicional1Val>","<Adicional2Val>","<Adicional3Val>","<AdicionalD1Val>","<AdicionalD2Val>","<AdicionalD3Val>"]];
+var os_estoque_sub = <Estoque>;
+</script>
+<div id="comprasubproduto" style="display:none" class="os_relativo"><FormProd><LinkComprar></FormProd></div>
+</Sub>
+<script type="text/javascript">
+if(bTemSubProds && os_conta > 0 && verificaDesc != "") {
+document.write("<table border='0' cellspacing='0' cellpadding='0'><tr><td>");
+FC_fInitProd(<IDProduto>);
+document.write("</td></tr></table>"); }
+else {
+  if(os_estoque_sub>0) {
+    document.getElementById("comprasubproduto").style.display="block"; }
+  else {
+    document.write("<a href='#E' onclick=MostraDispCaptcha('"+IDLojaNum+"',<IDProduto>);><img src='<BaseLoja>images/BotGridEsgotado.png' border=0></a>");}
+}
+</script>
+    </div>
+	<div class="b_lightbox"><a href="#inline1" id="os_imglight" rel="lightbox">Consulte frete e prazo de entrega</a></div>  
+    <div class="os_extras">
+      <AdicionalD1>
+      <AdicionalD2>
+      <strong>D&uacute;vidas neste produto?</strong> Ligue no (11) 5034-7444 (de seg. à sex. das 9 às 18h) ou <a href="http://www.lojadoprazer.com.br/sistema/ajuda.asp?IDLoja=<IDLoja>">consulte nossa base de perguntas e respostas.</a>
+	  <br />
+      <strong>Disponibilidade:</strong> Em estoque para envio ainda hoje <a href="#inline2" id="os_imglight" rel="lightbox"><img src="<BaseLoja>images/question.png" width="15" height="15" /></a>
+    </div>
+   </br>
+   <!--Simulação de Frete-->
+ 
+	<div id="inline1" style="display:none; width:550px; height:300px">
+		<p style="margin: 15px 0 15px 0">
+			O prazo de entrega é contado em dias úteis, ou seja, não inclui sábados, domingos e feriados.
+			O valor do frete depende da quantidade de itens em seu carrinho de compras, portanto o valor total do frete será calculado no fechamento do pedido.
+		</p>
+		<div id="ShowCEP<IDProduto>" class="ShowCEP"></div>
+		<script>ShowCEP(<IDProduto>);</script>
+	</div>
+
+	<div id="inline2" style="display:none; width:500px">
+		<span class="EstDescrProd" style="margin: 15px 0 0 0">Pedidos realizados até as 16horas em dias úteis com cartão de crédito e aprovação imediata serão despachados no mesmo dia. Pedidos realizados  através de depósito bancário, boleto e PagSeguro serão despachados somente após confirmação de pagamento.</span>
+	</div>
+
+
+   <div class="os_redes">
+     <table>
+        <tr>  
+          <td><ShareFacebook></td>
+          <td><ShareTwitter></td>
+          <td><GooglePlusOne size="small"></td>
+          <td class="n_indique"><strong><script>IndicaProd(<IDProduto>);</script></strong></td>
+        </tr>
+      </table>
+    </div>
+
+   
+  </div>  
+  <div class="clear"></div>
+</div>
+
+<!--informacoes-->
+
+<div class="row1_1" style="margin:20px 0;">
+  <div class="tit_tab">&nbsp;&nbsp;DESCRI&Ccedil;&Atilde;O</a></div>  
+    <div class="tab_container">
+      <div id="tab1" class="tab_content2">
+        <div class="descricaoHtm">
+          <Descricao><br /><DescrHTM>
+        </div>
+				<p class="acressimo" style="margin-top:15px; border-top:1px solid #e6e6e6"><strong>Jogo rápido. As 5 dúvidas mais frequentes de nossos clientes:</strong><br>
+				1) Sim, todos os nossos produtos são embalados em caixas pardas mega discretas e seguras. Aqui o sigilo é fundamental, <a href="http://www.lojadoprazer.com.br/sistema/Custom.asp?IDLoja=343&arq=landing/pedidos.html">quer saber mais?</a><br>
+				2) O frete é calculado automaticamente pelo sistema, assim não se preocupa com isso. Quer uma ideia? <a href="#inline1" id="os_imglight" rel="lightbox">Consulte aqui o valor de frete e prazo de entrega.</a><br>
+				3) Claro que as compras são seguras, utilizamos alta tecnologia para deixar tudo super protegido.<br>
+				4) Pode usar seu cartão de crédito sem medo, na fatura aparece um nome bem discreto. Se preferir pague com depósito ou boleto bancário.<br>
+				5) Comprou e não gostou? Só a Loja do Prazer te oferece 90 dias de troca sem custo, independente do motivo.<br></p>
+
+				<p class="acressimo">Quer saber mais? Veja <a href="http://www.lojadoprazer.com.br/ajuda.asp?IDLoja=343"><strong>aqui</strong></a> todas as respostas para suas dúvidas. Ou utilize nossa <a href="http://www.lojadoprazer.com.br/sistema/FaleConosco.asp?IDLoja=<IDLoja>"><strong>Central de Atendimento</strong></a><br><br></p>
+				
+        <p class="acressimo"><strong>Disponibilidade deste produto:</strong> em estoque. Fornecido pela Loja do Prazer. Postagem no dia ou no primeiro dia &uacute;til. Valor do produto SEM frete. Frete &agrave; contratar. Valores variam conforme op&ccedil;&atilde;o de envio. Imagem meramente ilustrativa.</p></div>
+      </div>      
+    </div>
+    <div class="clear"></div>
+</div>
+
+<!--
+  <div class="row1_1" style="margin:20px 0;">
+    <ul class="tabs">
+      <li><a href="#tab1">&nbsp;&nbsp;DESCRI&Ccedil;&Atilde;O</a></li>
+      <li><a href="#tab2">Video 360</a></li>
+          
+    </ul>
+    <div class="tab_container">
+      <div id="tab1" class="tab_content">
+        <div class="descricaoHtm">
+          <Descricao><br /><DescrHTM>
+        </div>
+        <p class="acressimo" style="margin-top:15px; border-top:1px solid #e6e6e6"><strong>Disponibilidade:</strong> em estoque. Postagem no dia ou no primeiro dia &uacute;til. Valor do produto SEM frete. Frete &agrave; contratar. Valores variam conforme op&ccedil;&atilde;o de envio. Imagem meramente ilustrativa</p>
+        <p class="acressimo">Oferecemos uma garantia EXCLUSIVA da Loja do Prazer Sex Shop de 3 meses em todos os produtos com vibrador e 7 dias para trocas por qualquer motivo.</p>
+        <p class="acressimo"><strong>Ainda com d&uacute;vida sobre este produto? Consulte nossa <a href="/Custom.asp?IDLoja=343&arq=AbtDuvidas.htm">base de conhecimento</a>, com diversas d&uacute;vidas frequentes, ou ligue: (11) 5034-7444 - Das 09:00 &agrave;s 18:00hs (De segunda &agrave; sexta).</strong></p></div>
+      
+      </div>
+      <div id="tab2" class="tab_content">
+<table align="center">
+	<tr><td><script>FlashSemBorda('../lojas/00000343/images/Video360',400,557,'ffffff','');</script></td></tr>
+</table>	      
+      </div>
+    </div>
+        <div class="clear"></div>
+  </div>    
+
+
+-->
+
+<!--crosseling-->
+<div class="row1_1" style="margin:20px 0 0 0">
+    <div class="tit_tab">&nbsp;&nbsp;Quem Viu, Viu Tamb&eacute;m</div>
+    <div class="tab_container">      
+      <div id="tab2" class="tab_content2">
+        <CrossSelling>     
+      </div>      
+    </div>
+    <div class="clear"></div>
+</div>
+
+<!--compartilha face-->
+<!--<div class="row1_1" style="margin:20px 0;">
+    <div class="tit_tab">&nbsp;&nbsp;Comente esse produto</div>
+    <div class="tab_container">
+      <div id="tab3" class="tab_content2">
+
+      </div>      
+    </div>
+    <div class="clear"></div>
+</div>-->
+
+<!--fim produto-->
+<div id="exc_categorias2"><div>
+</ProdDet>
+
+<ProdBottom>
+  <!--fecha segunda coluna em categorias-->
+  </div>
+  <!--fecha linha em categorias-->
+</div>
+</ProdBottom>
