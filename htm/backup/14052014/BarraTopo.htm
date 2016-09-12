@@ -1,0 +1,719 @@
+<link type="text/css" rel="stylesheet" href="<Baseloja>htm/layout.css" media="all">
+<link type="text/css" rel="stylesheet" href="<BaseLoja>htm/jquery_ui.css" media="all"> 
+<link type="text/css" rel="stylesheet" href="<BaseLoja>htm/tooltipster.css" media="all"> 
+<!--[if IE]> 
+<style type="text/css">
+.os_eDepartamentos ul li a { display:inline !important; padding:0 0 0 17px !important; line-height:18px}
+.os_eNewsletter {background:url(../lojas/000<IDLoja>/images/layout/bgNewsIE.gif) no-repeat}
+.os_tCategorias {overflow:hidden}
+.os_navCat ul li.pai a.pai {font-size:12px !important;}
+.os_navCat ul.mega-menu li .sub li.mega-hdr li.seta a {font-size:12px !important;}
+.ui-autocomplete-category{margin-top: -2px}
+#fc-cart-topo-container {height:300px;}
+#fc-cart-topo-container td{font-size: 11px; margin:0}
+#fc-cart-topo-container a{font-size: 11px;}
+#fc-cart-topo-container a:hover{font-size: 11px;}
+</style>
+<![endif]-->
+
+<script type="text/javascript" src="/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src=<Baseloja>htm/js/ldp_all.js></script>
+<script type="text/javascript" src=<Baseloja>htm/js/jquery_cookie.js></script>
+<script type="text/javascript" src=<Baseloja>htm/js/jquery_tooltipster.js></script>
+<script type="text/javascript" src=<BaseLoja>htm/JurosParcelas.js></script>
+<script type="text/javascript" src=<BaseLoja>htm/LojaLib.js?1></script>
+<script type="text/javascript" src=<BaseLoja>htm/js/toolbar.js></script>
+<script type="text/javascript" src=<BaseLoja>htm/js/autosuggest.js></script>
+<script type="text/javascript" src="<BaseLoja>htm/js/jqueryPoshytip.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/js/TabSlideOutv1_3.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/js/MenuTopoAparecer.js"></script>
+<script type="text/javascript" src="<BaseLoja>htm/js/MenuTopo.js"></script>
+
+<script type="text/javascript">
+// var globais
+var pdet  = "";
+var pdet2 = "";
+var pdet3 = "";
+var pdet4 = "";
+var exibeCart = "";
+var IDLoja='<IDLoja>';
+var IDLojaGrid='<IDLoja>'; 
+var IDLojaNum='<IDLojaNum>';
+var sCaminhoImagens='<BaseLoja>'+'images/';
+var sCaminhoImages='<BaseLoja>images/'; 
+var sCaminhoProds='<BaseLoja>'+'prod/';
+var IDLojaAS='<IDLoja>';
+var CaminhoProdAS='<BaseLoja>prod/';
+var sPag=document.location.href.toUpperCase(); 
+var g1='3';
+var g2='3';
+var g3='3';
+var g4='0';
+</script>
+
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function(jQuery){
+	jQuery('#mega-menu').dcMegaMenu({
+		rowItems: '5',
+		speed: 'fast',
+		effect: 'fade'
+	});
+
+	jQuery('#Topo-Tooltip1').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+
+	jQuery('#Topo-Tooltip2').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+
+	jQuery('#Topo-Tooltip3').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+	jQuery('#Topo-Tooltip4').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+
+	jQuery('#Topo-Tooltip5').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+
+	jQuery('#Topo-Tooltip6').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+
+	jQuery('#Topo-Tooltip7').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+
+	jQuery('#Topo-Tooltip8').poshytip({
+		slide: false,
+		showTimeout: 100
+         });
+
+
+});
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+
+var d = new Date();
+var month = d.getMonth()+1;
+var day = d.getDate();
+var output = d.getFullYear() + '/' +
+    ((''+month).length<2 ? '0' : '') + month + '/' +
+    ((''+day).length<2 ? '0' : '') + day;
+
+var bfday = '2013/11/29'    
+if (output == bfday){
+	jQuery('body').css('background','#000')
+}    
+
+	jQuery(".os_tCategorias").addClass("apos_load");
+	
+	//Adiciona banners no carrinho
+	if(FC$.Page == "Cart"){
+	  jQuery("<br /><span id='idTxtCupomFCCheckout'>Tem Cupom? Preencha abaixo. Se não tiver, deixe em branco. <br></span><input id='CupomCheckout' class='InputText' type='text' value='' style='width:310px;' maxlength='30' size='35' name='Cupom'><br /><p class='fc-tit'>Produtos que não podem faltar</p><table width='100%'><tr><td><a href='prod,IDLoja,343,IDProduto,4410462,vibradores-vibradores-femininos-vibrador-feminino-luxurios-pleasure---colecao-relaxintimate'><div class='fc-banner1'></div></a></td><td><a href='prod,IDLoja,343,IDProduto,4298581'><div class='fc-banner2'></div></a></td><td><a href='prod,IDLoja,343,IDProduto,4298633'><div class='fc-banner3'></div></a></td><td><a href='prod,IDLoja,343,IDProduto,4298234'><div class='fc-banner4'></div></a></td></tr></table>").insertAfter("#idTxtFreightSimulationFC");
+	}
+	
+});
+</script>
+
+<script type="text/javascript">
+function MostraChatLoja()
+  {
+  popup=window.open("http://www.rumo.com.br/sistema/ChatLogin.asp?IDLoja=<IDLoja>","Chat","top=20,left=20,height=280,width=390,scrollbars=no,resizable=yes");
+  popup.focus();
+  return void(0);
+  }
+</script>
+
+<script type="text/javascript">
+// palavra digitada
+function aoiniciar() {
+  var edigitada = "";
+  var pdigitada = "<SearchText>";
+  ofBusca=document.fBusca;
+  if(ofBusca){
+    if (pdigitada == "") {
+      ofBusca.Texto.value = "Digite aqui o que procura";
+    }
+    else {
+      ofBusca.Texto.value = "<SearchText>";
+      //document.fBusca.Texto.value = pdigitada; 
+    }
+  }
+}
+window.onload = aoiniciar;
+</script>
+
+
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery().UItoTop({ easingType: 'easeOutQuart' });
+    jQuery('.tooltip').tooltipster({interactive: true,fixedWidth: 264,position: 'bottom-left' });
+
+	});
+</script>
+
+<script type="text/javascript">
+// jquery marcas cycle
+jQuery(function() {
+  jQuery("#os_marcas").cycle({  
+    fx: 'scrollHorz',
+	speed: 600,
+	timeout: 0,
+    autostop: true,
+	prev : '.prev_marca',
+    next : '.next_marca'
+  });
+});
+</script>
+
+
+<!--Toolbar-->
+<div id="fc-toolbar" style="display:none;" class="shadow">
+	<a id="fc-controler" href="#"><img src="<BaseLoja>images/close.png" width="25" height="25" /></a>
+	<div id="fc-sep"></div>
+	<div id="blocoCentralizado">
+		<div id="bloco1">
+				<h1><a id="fc-logo" href="http://www.lojadoprazer.com.br" alt="Voltar ao início"><img src="<BaseLoja>images/layout/LogoLDPToolbar.png" width="150" height="29" /></a></h1>
+							<div class="zFMegaMenuToolbar">
+								<ul id="TopoMenuTodos">
+								  <li> <a href="#" id="TodosServicos">LISTAR CATEGORIAS&nbsp;&nbsp;<img src="<BaseLoja>images/layout/IcArrowcCMMenu.png" width="8" height="6" /></a>
+								    <ul> 
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="Home.asp?IDLoja=<IDLoja>">ACESSÓRIOS</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="Categorias.asp?IDLoja=<IDLoja>">COSMÉTICOS</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="/prod,idloja,<idlojanum>,Promocao,True">FILMES</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="/prod,idloja,<idlojanum>,Lancamento,True">INFLÁVEIS</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="AddProduto.asp?IDLoja=<IDLoja>">LINGERIES</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="Ajuda.asp?IDLoja=<IDLoja>">MASTURBADORES</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="FaleConosco.asp?IDLoja=<IDLoja>">PARA PRESENTAR</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="Ajuda.asp?IDLoja=<IDLoja>#Entregas">PÊNIS</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="Ajuda.asp?IDLoja=<IDLoja>#Seguranca">PRAZER ANAL</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="BuscaAvancada.asp?IDLoja=<IDLoja>">PRESERVATIVOS</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="Ajuda.asp?IDLoja=<IDLoja>#Seguranca">SADO/FETICHE</a></li>
+								      <li><img src="<BaseLoja>images/layout/IcArrowMMenu.png" width="6" height="8" />&nbsp;<a href="BuscaAvancada.asp?IDLoja=<IDLoja>">VIBRADORES</a></li>
+								   </ul>
+								 </li>
+								</ul>
+							</div>
+		</div>
+
+		<div id="bloco2">
+			<div id="fc-search">
+			  <form name="fc-form-search" id="autocomplete-form-toolbar" method="GET" action="ListaProdutos.asp?IDLoja=<IDLoja>">
+			    <input type="hidden" name="IDLoja" value="<IDLoja>">
+			    <input type="hidden" name="Digitada" value="True">
+			    <input name="Texto" type="text" title="Digite a palavra desejada" id="autocomplete-toolbar" accesskey="0" class="fc-search-campo"  value="" onfocus="if (this.value == 'Digite aqui o que procura') {this.value='';}" onblur="if (this.value == '') {this.value='Digite aqui o que procura';}" />
+			    <input type="submit" name="ok" value="" class="fc-search-bot">
+			  </form>
+			  <!--<div id="fc-shipping"><p>Faltam </p><p style='color: #FEEDBA'>&nbsp;R$ 249,00&nbsp;</p><p> para você ganhar</p><span>frete&nbsp;</span><span style='color: #FEEDBA'>GRÁTIS</span></div>-->
+			</div>			
+		</div>
+
+		<div id="bloco3">
+			<div id="fc-cart">
+				<img id="fc-cart-controler" src="<BaseLoja>images/close.png" width="25" height="25" />
+				<div id="fc-cart-data"></div>
+				<div id="fc-cart-container" style="display:none">
+					<table></table>
+					<div id='fc-cart-parc'><br /></div>
+				</div>
+			</div>				
+		</div>		
+	
+	</div>
+</div>
+
+
+<!--Box Flutuante-->
+<div class="fc-box" style="display:none"></div>
+
+<!--BarraPersonalizada no Checkout - Editar Rodape.htm-->
+<div class="os_topo" id="topoPedToolTip" style="display:none">
+<div class="os_tBar" style="background:none">
+	<h1><a href="/home.asp?idloja=<IDloja>" style="background:url(<BaseLoja>images/layout/spriteTopo.png) no-repeat -15px -13px;width:184px;height:100px;">Loja do Prazer</a></h1>
+	<div class="os_tBanner1">
+    	<ul>
+	    	<li><a href="http://www.lojadoprazer.com.br"><b>Início</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip4" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICEDiscreta.png' width='30' height='30' alt='EMBALAGENS DISCRETAS' /></td><td class='fc-Tooltip-Tit1'><b>EMBALAGENS DISCRETAS</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>As embalagens são discretas,<br />seguras e com remetente discreto.</span></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICCSegura.png' width='30' height='30' alt='Compra Segura' /></td><td class='fc-Tooltip-Tit1'><b>COMPRA 100% SEGURA</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Tecnologia avançada para proteção,<br />dos dados ao fechar a compra.</span></td></tr></table></td></tr><tr><td align='center'  height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICDCartao.png' width='30' height='30' alt='Discrição no cartão' /></td><td class='fc-Tooltip-Tit1'><b>DISCRIÇÃO NO CARTÃO</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Discrição na fatura do cartão de,<br />crédito e no contato com o cliente.</span></td></tr></table></td></tr></table>" href="#"><b>Privacidade</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip5" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICESedex.png' width='30' height='30' alt='Envio via SEDEX' /></td><td class='fc-Tooltip-Tit1'><b>ENVIO VIA SEDEX</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Para entregas mais rápidas, temos<br />o SEDEX (1 a 2 dias úteis).</span></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICEnvioPac.png' width='30' height='30' alt='Envio via PAC' /></td><td class='fc-Tooltip-Tit1'><b>ENVIO VIA PAC</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Para entregas mais econômicas,<br />temos o PAC (5 a 15 dias úteis).</span></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICEMotoboy.png' width='30' height='30' alt='Envio via Motoboy' /></td><td class='fc-Tooltip-Tit1'><b>ENVIO VIA MOTOBOY</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Entrega em até 4 horas para<br />São Paulo capital. Veja regras.</span></td></tr></table></td></tr></table>" href="#"><b>Prazo de Entrega</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip6" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICFConosco.png' width='30' height='30' alt='Fale Conosco' /></td><td class='fc-Tooltip-Tit1'><b>FALE CONOSCO</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span style='color:red;font-weight:bold;'>(11) 5034-7444</span> - <span>de segunda<br />à sexta-feira das 9 às 18 hrs.</span></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICTDevolucao.png' width='30' height='30' alt='Trocas e Devoluções' /></td><td class='fc-Tooltip-Tit1'><b>TROCAS E DEVOLUÇÕES</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>90 dias para troca por conta<br />da Loja do Prazer.</span></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='ajuda.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICTireDuvidas.png' width='30' height='30' alt='Tire suas Dúvidas' /></a></td><td class='fc-Tooltip-Tit'><b><a href='ajuda.asp?IDLoja=<IDLoja>'>TIRE SUAS DÚVIDAS</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='ajuda.asp?IDLoja=<IDLoja>'>Veja aqui todas as respostas<br />para suas dúvidas.</a></td></tr></table></td></tr></table>" href="#"><b>Posso Ajudar?</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a href="Custom.asp?IDLoja=<IDLoja>&arq=LDPQuemSomos.htm"><b>Quem Somos</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip8" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='track.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICMeusPedidos.png' width='30' height='30' alt='Meus Pedidos' /></a></td><td class='fc-Tooltip-Tit'><b><a href='track.asp?IDLoja=<IDLoja>'>MEUS PEDIDOS</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='track.asp?IDLoja=<IDLoja>'>Faça o acompanhamento de <br />todos os seus pedidos.</a></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='cadastro.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICMeuCadastro.png' width='30' height='30' alt='Meu Cadastro' /></a></td><td class='fc-Tooltip-Tit'><b><a href='cadastro.asp?IDLoja=<IDLoja>'>MEU CADASTRO</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='cadastro.asp?IDLoja=<IDLoja>'>Cadastre-se aqui para <br/>realizar compras</a></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='cadastro.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICMeusDados.png' width='30' height='30' alt='Meus Dados' /></a></td><td class='fc-Tooltip-Tit'><b><a href='cadastro.asp?IDLoja=<IDLoja>'>MEUS DADOS</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='cadastro.asp?IDLoja=<IDLoja>'>Acesse ou altere os <br />seus dados pessoais.</a></td></tr></table></td></tr></table>" href="#"><b>Minha conta</b></a></li>
+    	</ul>
+	</div>
+
+	<div class="fc-topo-tele">Dúvidas? (11) 5034-7444</div>
+			<div class="n_selo_c">
+				<iframe scrolling="no" frameborder="0" name="iframeThawte" ID="iframeThawte" src="https://www.rumo.com.br/sistema/SeloThawte.asp?size=S&lang=br" style="width:199px;height:39px"></iframe>
+			</div>
+	        <div class="n_selo_c2"><img src="<BaseLoja>images/layout/ico_seguranca.gif" alt="" style="visibility:visible;"></div>
+        </div>
+</div>
+
+<div class="os_topo" id="topoPed">
+  <div class="os_tBar fc-toolbar-show-hide">
+    <!--logo-->
+    <h1><a href="http://www.lojadoprazer.com.br" title="Voltar ao início">Loja do Prazer</a></h1>
+    <!--busca-->
+
+		<div class="zFBarraTopoLogin">
+				<script>
+            if(""!="<NomeCliente>")
+            {document.write("<div class='fc-Tooltip-LoginA'>Olá, <span class='fc-Tooltip-LoginNC'><NomeCliente></span><a href='cadastro.asp?IDLoja=<IDLoja>&logoff=1'>. Sair?</a></div>")}
+            else
+            {document.write("<div class='fc-Tooltip-Login'>Olá, <a href='cadastro.asp?IDLoja=<IDLoja>'>identifique-se</a> ou <a href='cadastro.asp?IDLoja=<IDLoja>'>cadastra-se</a></div>")}
+        </script>
+		</div>
+
+    <div class="os_tBusca">
+      <form name="fBusca" id="autocomplete-form" method="GET" action="ListaProdutos.asp?IDLoja=<IDLoja>">
+        <input type="hidden" name="IDLoja" value="<IDLoja>">
+        <input type="hidden" name="Digitada" value="True">
+        <input name="Texto" type="text" title="Digite a palavra desejada" id="autocomplete" accesskey="0" class="os_bCampo"  value="" onfocus="if (this.value == 'Digite aqui o que procura') {this.value='';}" onblur="if (this.value == '') {this.value='Digite aqui o que procura';}" />
+        <input type="submit" name="ok" value="" class="os_bBotao">
+      </form>
+    </div>
+    <!--busca avancada-->
+    <div class="os_tAvancada"><a href="/buscaavancada.asp?idloja=<IDLoja>">busca avan&ccedil;ada</a></div>
+    <!--banner1-->    
+    <div class="os_tBanner1">
+    	<ul>
+	    	<li><a href="http://www.lojadoprazer.com.br"><b>Início</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip1" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='ajuda.asp?IDLoja=<IDLoja>#embalagens'><img src='<BaseLoja>images/ICEDiscreta.png' width='30' height='30' alt='EMBALAGENS DISCRETAS' /></a></td><td class='fc-Tooltip-Tit'><b><a href='ajuda.asp?IDLoja=<IDLoja>#embalagens'>EMBALAGENS DISCRETAS</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='ajuda.asp?IDLoja=<IDLoja>#embalagens'>As embalagens são discretas,<br />seguras e com remetente discreto.</a></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='ajuda.asp?IDLoja=<IDLoja>#seguranca'><img src='<BaseLoja>images/ICCSegura.png' width='30' height='30' alt='Compra Segura' /></a></td><td class='fc-Tooltip-Tit'><b><a href='ajuda.asp?IDLoja=<IDLoja>#seguranca'>COMPRA 100% SEGURA</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='ajuda.asp?IDLoja=<IDLoja>#seguranca'>Tecnologia avançada para proteção,<br />dos dados ao fechar a compra.</a></td></tr></table></td></tr><tr><td align='center'  height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICDCartao.png' width='30' height='30' alt='Discrição no cartão' /></td><td class='fc-Tooltip-Tit1'><b>DISCRIÇÃO NO CARTÃO</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Discrição na fatura do cartão de,<br />crédito e no contato com o cliente.</span></td></tr></table></td></tr></table>" href="#"><b>Privacidade</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip2" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICESedex.png' width='30' height='30' alt='Envio via SEDEX' /></td><td class='fc-Tooltip-Tit1'><b>ENVIO VIA SEDEX</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Para entregas mais rápidas, temos<br />o SEDEX (1 a 2 dias úteis).</span></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><img src='<BaseLoja>images/ICEnvioPac.png' width='30' height='30' alt='Envio via PAC' /></td><td class='fc-Tooltip-Tit1'><b>ENVIO VIA PAC</b></td></tr><tr><td class='fc-Tooltip-Desc1'><span>Para entregas mais econômicas,<br />temos o PAC (5 a 15 dias úteis).</span></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='Custom.asp?IDLoja=<IDLoja>&arq=textos/delivery.html'><img src='<BaseLoja>images/ICEMotoboy.png' width='30' height='30' alt='Envio via Motoboy' /></a></td><td class='fc-Tooltip-Tit'><b><a href='Custom.asp?IDLoja=<IDLoja>&arq=textos/delivery.html'>ENVIO VIA MOTOBOY</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='Custom.asp?IDLoja=<IDLoja>&arq=textos/delivery.html'>Entrega em até 4 horas para<br />São Paulo capital. Veja regras.</a></td></tr></table></td></tr></table>" href="#"><b>Prazo de Entrega</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip3" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='FaleConosco.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICFConosco.png' width='30' height='30' alt='Fale Conosco' /></a></td><td class='fc-Tooltip-Tit'><b><a href='FaleConosco.asp?IDLoja=<IDLoja>'>FALE CONOSCO</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='FaleConosco.asp?IDLoja=<IDLoja>'><span style='color:red;font-weight:bold;'>(11) 5034-7444</span> - de segunda<br />à sexta-feira das 9 às 18 hrs.</a></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='ajuda.asp?IDLoja=<IDLoja>#devolucao'><img src='<BaseLoja>images/ICTDevolucao.png' width='30' height='30' alt='Trocas e Devoluções' /></a></td><td class='fc-Tooltip-Tit'><b><a href='ajuda.asp?IDLoja=<IDLoja>#devolucao'>TROCAS E DEVOLUÇÕES</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='ajuda.asp?IDLoja=<IDLoja>#devolucao'>90 dias para troca por conta<br />da Loja do Prazer.</a></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='ajuda.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICTireDuvidas.png' width='30' height='30' alt='Tire suas Dúvidas' /></a></td><td class='fc-Tooltip-Tit'><b><a href='ajuda.asp?IDLoja=<IDLoja>'>TIRE SUAS DÚVIDAS</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='ajuda.asp?IDLoja=<IDLoja>'>Veja aqui todas as respostas<br />para suas dúvidas.</a></td></tr></table></td></tr></table>" href="#"><b>Posso Ajudar?</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a href="Custom.asp?IDLoja=<IDLoja>&arq=LDPQuemSomos.htm"><b>Quem Somos</b></a></li>
+	    	<li><a href="">&bull;</a></li>
+	    	<li><a id="Topo-Tooltip7" title="<table><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='track.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICMeusPedidos.png' width='30' height='30' alt='Meus Pedidos' /></a></td><td class='fc-Tooltip-Tit'><b><a href='track.asp?IDLoja=<IDLoja>'>MEUS PEDIDOS</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='track.asp?IDLoja=<IDLoja>'>Faça o acompanhamento de <br />todos os seus pedidos.</a></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='cadastro.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICMeuCadastro.png' width='30' height='30' alt='Meu Cadastro' /></a></td><td class='fc-Tooltip-Tit'><b><a href='cadastro.asp?IDLoja=<IDLoja>'>MEU CADASTRO</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='cadastro.asp?IDLoja=<IDLoja>'>Cadastre-se aqui para <br/>realizar compras</a></td></tr></table></td></tr><tr><td align='center' height='25'><img src='<BaseLoja>images/ICTooltipSep.png' width='232' height='1' alt='' /></td></tr><tr><td><table width='286' cellspacing='0' cellpadding='0'><tr><td rowspan='2' align='center' width='55'><a href='cadastro.asp?IDLoja=<IDLoja>'><img src='<BaseLoja>images/ICMeusDados.png' width='30' height='30' alt='Meus Dados' /></a></td><td class='fc-Tooltip-Tit'><b><a href='cadastro.asp?IDLoja=<IDLoja>'>MEUS DADOS</a></b></td></tr><tr><td class='fc-Tooltip-Desc'><a href='cadastro.asp?IDLoja=<IDLoja>'>Acesse ou altere os <br />seus dados pessoais.</a></td></tr></table></td></tr></table>" href="#"><b class="zFToolTipMinhaConta">Minha conta</b></a></li>
+    	</ul>
+    </div>
+    <!--cesta-->
+    <div class="os_tCesta">
+    
+    
+    <a href='/addproduto.asp?idloja=<IDLoja>' style="display:block"><span class='os_itens'>MEU CARRINHO</span><br /><span class="os_itens" id="QtdItensCesta"></span><br /><span class="os_itens" id="ValorItensCesta"></span></a></div>
+		<div id="fc-cart-topo-container" style="display:none">
+			<table></table>
+			<div id='fc-cart-topo-parc'><br /></div>
+    
+    
+    </div> 
+  
+  </div>
+
+  <div class="os_tCategorias">
+    <div class="os_navCat">
+      <ul id="mega-menu" class="mega-menu">
+        <li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186250,acessorios-eroticos" class="pai">Acess&oacute;rios</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2065,acessorios-femininos">Acess&oacute;rios Femininos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,3736,acessorios-pompoarismo">Acess&oacute;rios Pompoarismo</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2059,aneis-penianos">An&eacute;is Penianos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,9613,capas-penianas-e-extensor">Capas Penianas e Extensores</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,181224,cilios-posticos">C&iacute;lios Posti&ccedil;os</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2062,cintas-penianas">Cintas Penianas</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2149,bombas-penianas">Desenvolvedores Penianos</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2064,estimuladores-e-dedeiras">Estimuladores e Dedeiras</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117985,estimuladores-de-prostata">Estimuladores de Pr&oacute;stata</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,76824,livros-eroticos">Livros Er&oacute;ticos</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,11222,massageadores-eroticos">Massageadores Er&oacute;ticos</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,35396,sandalias-eroticas">Sand&aacute;lias Er&oacute;ticas</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,165018,tapa-mamilos">Tapa Mamilos</a></li>      
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>               
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA ACESSORIOS-->                  
+                  <prod out="p254" id="3319341">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186252,cosmeticos" class="pai">Cosm&eacute;ticos</a>
+          <ul>
+            <li>
+              <ul>
+								<li class="seta"><a href="prod,idloja,<IDLoja>,avancada,true,digitada,true,texto,KamaShastra" class="dpromolanc">Cole&ccedil;&atilde;o KamaShastra</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117206,bolinhas-de-oleo-corporal">Bolinhas de &Oacute;leo Corporal</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,127160,comestiveis">Comest&iacute;veis</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,108992,corpo-e-banho">Corpo e Banho</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,107298,energeticos">Energ&eacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117207,excitante-unissex">Excitante Unissex</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117200,gel-para-sexo-anal">Gel para Sexo Anal</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117203,gel-do-beijo">Gel do Beijo / Lâmina Bucal</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117204,gel-feminino">Gel Feminino</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117205,gel-masculino">Gel Masculino</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117201,gel-retardante">Gel Retardante</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,160266,locao-efervescente">Lo&ccedil;&atilde;o Efervescente</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,130050,locao-para-massagem">Lo&ccedil;&atilde;o para Massagem</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2079,lubrificantes">Lubrificantes</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117202,gel-para-massagem-hot">Gel para Massagem HOT</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117208,gel-para-massagem-ice">Gel para Massagem ICE</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,3502,perfumes-afrodisiacos-fem">Perfumes Afrodisíacos Fem</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,218267,perfumes-afrodisiacos-mas">Perfumes Afrodisíacos Masc</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,127159,velas-para-massagem">Velas para Massagem</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA COSMETICOS-->
+                  <prod out="p254" id="4385400">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186257,filmes-em-dvd-e-blu-ray" class="pai regra1">Filmes</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2833,dvd-hetero-nacional">DVD Porn&ocirc; Nacional</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2834,dvd-hetero-importado">DVD Porn&ocirc; Importado</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,11221,dvd-lesbica">DVD L&eacute;sbica</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,8709,dvd-gay-nacional">DVD Gay Nacional</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,8710,dvd-gay-importado">DVD Gay Importado</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,9019,dvd-travesti">DVD Travesti</a></li>
+                <li class="seta"><a href="/prod,idloja,343,avancada,true,digitada,true,texto,loving+sex">Cole&ccedil;&atilde;o Loving Sex</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA FILMES-->                  
+                  <prod out="p254" id="4105755">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,186277,inflaveis" class="pai regra1">Infláveis</a>
+          <ul>
+            <li>
+              <ul>
+	              <li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,217047,acessorios-para-inflaveis">Acessórios para Infláveis</a></li>	
+								<li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,2816,bonecas-inflaveis">Bonecas Infláveis</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,217045,bonecos-inflaveis">Bonecos Infláveis</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,217046,travestis-inflaveis">Travestis Infláveis</a></li>		
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  			
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA INFLAVEIS-->                  
+                  <prod out="p254" id="4104021">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,186253,fantasias-e-lingeries" class="pai regra2">Lingeries</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,186120,fantasias-com-peruca">Fantasias com Peruca Fem</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2110,fantasias-femininas">Fantasias Er&oacute;ticas Fem</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,126760,fantasias-masculinas">Fantasias Er&oacute;ticas Masc</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,136818,lingeries-linha-gg">Lingeries GG (Plus Size)</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,177907,baby-dolls">Baby Dolls</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,92085,biquinis-eroticos">Biquinis Er&oacute;ticos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2090,bodies">Bodies</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2091,calcinhas-fio-dental">Calcinhas Fio Dental</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,179859,calcinhas-masculinas">Calcinhas Masculinas</a></li>
+              </ul>
+            </li>
+						
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,140821,calcas-sensuais">Cal&ccedil;as Sensuais</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,177908,camisolas">Camisolas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2094,combinetes">Combinetes e Camisetes</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2100,conjuntos-sensuais">Conjuntos Sensuais</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,120724,corselets">Corselets</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,4946,cuecas-eroticas">Cuecas Er&oacute;ticas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2099,espartilhos">Espartilhos</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,143747,luvas">Luvas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,140608,macacoes-sensuais">Macac&otilde;es Sensuais</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,167454,meias-avulsas">Meias Avulsas</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,41492,roupas-sensuais">Roupas Sensuais (Clubwear)</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,24307,saias-e-mini-shorts">Saias e Mini Shorts</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,175698,sutias">Suti&atilde;s</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,13580,vestidos-sensuais">Vestidos Sensuais</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLoja>,idcategoria,186253,produtos,20,order,1,avancada,1,adicional2,64072" class="dpromolanc">Especial para Noivas</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA LINGERIES-->                  
+                  <prod out="p254" id="2974481">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+				<li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186284,masturbadores" class="pai regra1">MASTURBADORES</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,idloja,<IDLojaNum>,avancada,true,digitada,true,texto,zolo+pocket" class="dpromolanc">Coleção Zolo</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,177728,masturbadores-masculinos">Masturbadores Masculinos</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,2141,vagina-anus-boca">Vagina, Ânus e Boca</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLojaNum>,avancada,true,digitada,true,texto,durex,IDCategoria,2079,lubrificantes">Lubrificantes Durex</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA MASTURBADORES-->                  
+                  <prod out="p254" id="4227117">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+				<li class="pai"><a href="/prod,idloja,<IDLoja>,IDCategoria,186278,para-presentear" class="pai regra1">PARA PRESENTEAR</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,116693,artigos-de-cozinha">Artigos de Cozinha</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,121850,baralhos-eroticos">Baralhos Er&oacute;ticos</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,113301,dadinhos-eroticos">Dadinhos Er&oacute;ticos</a></li>
+                <li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,8776,presentes-eroticos">Presentes Eróticos</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLojaNum>,idcategoria,113300,presentes-romanticos">Presentes Românticos</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA PARA PRESENTEAR-->                  
+                  <prod out="p254" id="2386119">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,186255,penis-realisticos" class="pai regra2">P&ecirc;nis</a>
+          <ul>
+            <li>
+              <ul>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,avancada,true,digitada,true,texto,penis+cyberskin">Imitam Pele Humana</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,37013,penis-importados">Importados</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,37011,penis-importados-vibro">Importados com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118907,penis-ate-12cm">At&eacute; 12cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118908,penis-13-a-15cm">13 a 15cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118900,penis-13-a-15cm-com-vibro">13 a 15cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118909,penis-16-a-18cm">16 a 18cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118901,penis-16-a-18cm-com-vibro">16 a 18cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118910,penis-19-a-21cm">19 a 21cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118902,penis-19-a-21cm-com-vibro">19 a 21cm com Vibro</a></li>
+              </ul>
+            </li>
+            <li>
+               <ul>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118911,penis-22-a-24cm">22 a 24cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118903,penis-22-a-24cm-com-vibro">22 a 24cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118912,penis-acima-de-25cm">Acima de 25cm</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118904,penis-acima-de-25cm-vibro">Acima de 25cm com Vibro</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118913,penis-duplo">P&ecirc;nis Duplo</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118906,penis-duplo-com-vibro">P&ecirc;nis Duplo com Vibro</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA PENIS-->                  
+                  <prod out="p254" id="3745251">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+				
+				
+				
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,220581,prazer-anal" class="pai regra2">Prazer Anal</a>
+          <ul>
+            <li>
+              <ul>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,5166,bolinhas-anais">Bolinhas Anais</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,113355,duchas-higienicas">Duchas Higi&ecirc;nicas</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,117200,gel-para-sexo-anal">Gel para Sexo Anal</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2079,lubrificantes">Lubrificantes</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,218904,preservativos-durex">Preservativos Durex</a></li>
+								<li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,113297,plugs-anal">Plugs Anal</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA PRAZER ANAL-->                  
+                  <prod out="p254" id="3799063">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+				
+				
+				
+				
+				
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,186279,preservativos" class="pai regra2">Preservativos</a>
+          <ul>
+            <li>
+              <ul>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,218904,preservativos-durex" class="dpromolanc">Preservativos Durex</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,117918,preservativos-blowtex">Preservativos Blowtex</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,186087,preservativos-jontex">Preservativos Jontex</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,117915,preservativos-olla">Preservativos Olla</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,117914,preservativos-preserv">Preservativos Preserv</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,117916,preservativos-prudence">Preservativos Prudence</a></li>
+								<li class="seta"><a href="/prod,idloja,<IDLoja>,IDCategoria,2073,outros-preservativos">Outros Preservativos</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>            
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA PRESERVATIVOS-->                  
+                  <prod out="p254" id="4298218">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="pai regra4"><a href="/prod,idloja,343,IDCategoria,186280,sado-e-fetiches" class="pai regra1">Sado/Fetiche</a>
+          <ul>
+            <li>
+              <ul>
+							  <li class="seta"><a href="/prod,idloja,343,IDCategoria,18824,acessorios-sado">Acess&oacute;rios Sado</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,147833,algemas">Algemas</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,147835,aneis-penianos-sado">Anéis Penianos Sado</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,147837,arreios-sado">Arreios Sado</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,147838,chibatas---chicotes">Chibatas e Chicotes</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,177985,coleiras---mordacas">Coleiras e Mordaças</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,147840,kits-bondage">Kits Bondage</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,157903,pesos-de-aco-para-escroto">Pesos de A&ccedil;o para Escroto</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,147839,prendedores-de-mamilos">Prendedores de Mamilos</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,147834,vendas---capuz---mascaras">Vendas, Capuz e M&aacute;scaras</a></li>
+								<li class="seta"><a href="/prod,idloja,343,IDCategoria,91271,vestuario-de-latex">Vestu&aacute;rio de L&aacute;tex</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA SADO/FETICHE-->                  
+                  <prod out="p254" id="4074659">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>        
+        <li class="pai regra4"><a href="/prod,idloja,<IDLoja>,IDCategoria,186256,vibradores" class="pai regra2">Vibradores</a>
+          <ul>
+            <li>
+              <ul>
+                <li class="seta"><a href="http://www.lojadoprazer.com.br/wevibe" class="dpromolanc">Coleção We-Vibe</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,175759,vibradores-classicos">Vibradores Cl&aacute;ssicos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2084,vibradores-diversos">Vibradores Diversos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2085,vibradores-multi-funcoes">Vibradores Multi-Fun&ccedil;&otilde;es</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,118123,vibradores-rotativos">Vibradores Rotativos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,12040,vibradores-ponto-g">Vibradores Ponto G</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,2086,vibradores-femininos">Vibradores Femininos</a></li>
+                <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,160330,higienizador-para-vibradores">Higienizador para Vibradores</a></li>
+	              <li class="seta"><a href="/prod,IDLoja,<IDLoja>,IDCategoria,224177,copa-do-prazer" class="dpromolanc">Copa do Prazer</a></li>  
+              </ul>
+            </li>
+            <li>
+               <ul>                
+                <li>                  
+                  <!--DESTAQUE DO DIA VIBRADORES-->                  
+                  <prod out="p254" id="4291426">
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+    
+    <div class="os_il1"></div>
+  </div>
+  <div class="os_tNbarra">
+    <div class="os_tMenuPromo">
+    	<ul>
+	      <li><a href="/prod,idloja,<IDLoja>,lancamento,1">LAN&Ccedil;AMENTOS</a></li>
+	    	<li>&bull;</li>
+				<li><a href="/prod,idloja,<IDLoja>,promocao,1">PROMO&Ccedil;&Otilde;ES</a></li>
+	    	<li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+				<li><p>15 ANOS DE MERCADO</a></p>
+	    	<li>&bull;</li>
+				<li><p>ATENDEMOS TODO O BRASIL</p></li>
+	    	<li>&bull;</li>
+				<li><p>A MAIOR SEX SHOP DA AM&Eacute;RICA LATINA</p></li>
+    	</ul>
+    </div>
+  </div>
+
+  <!--<div class="os_tInformacoes">
+    <div class="fc_Banner1"><a href="http://www.lojadoprazer.com.br/sistema/ajuda.asp?IDLoja=343"><img src="<BaseLoja>images/layout/banner/banner1.jpg" width="690" height="50" alt="" /></div>    
+  </div>-->
+</div>
+
+<!-- final barraTopo
