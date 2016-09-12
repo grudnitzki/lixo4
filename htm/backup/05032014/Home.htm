@@ -1,0 +1,255 @@
+<style>
+#tabinterna { padding-bottom:0 !important}
+</style>
+<script type="text/javascript">
+function ConsultaSEDEX(){
+	var sURL;
+	var sObjeto = jQuery('#fc-consulta-objeto').val();
+	sURL='http://websro.correios.com.br/sro_bin/txect01$.QueryList?P_LINGUA=001&P_TIPO=001&P_COD_UNI='+sObjeto;
+	popup=window.open(sURL,'_blank','top=20,left=20,height=400,width=540,resizable=yes,status=no,scrollbars=yes,toolbar=yes,menubar=no,location=no');
+	popup.focus();
+} 
+</script>    
+<script>
+function MostraMaxParcela(PrecoProd,MaxParcelas){
+  var ComSem;
+  if(PrecoProd>=15)MaxParcelas=3;
+  else if(PrecoProd>=1)MaxParcelas=1;
+  if(PrecoProd==0||MaxParcelas==1||Juros.length==0)return;
+  if(MaxParcelas==0||MaxParcelas>Juros.length)MaxParcelas=Juros.length;
+  if(Juros[MaxParcelas-1]>0)ComSem=""; else ComSem="&nbsp;sem&nbsp;juros</font>";
+  document.write("ou&nbsp;<b>"+MaxParcelas+"x</b>"+ComSem+" de&nbsp;<b>"+FormatPrecoReais(CalculaParcelaJurosCompostos(PrecoProd,MaxParcelas))+"</b>");
+}
+</script>
+<script type="text/javascript">
+// jquery banner cycle
+jQuery(function() {
+  jQuery("#slideshow").cycle({  
+    fx: 'scrollHorz',        
+    timeout:	 6000,   
+    pager:		'#nav'
+  });
+});
+</script>
+<script>
+function MostraEconomia(PrecoProd,PrecoOri){
+if(PrecoProd!=PrecoOri)document.write("<br><font color=#6f9e45>Economize <strong>"+FormatPrice(PrecoOri-PrecoProd,'R$')+"</strong> ("+FormatNum(((PrecoOri-PrecoProd)/PrecoOri)*100)+"%)</font>");
+}
+
+function FormatNum(num){
+num=num.toString().replace(/\$|\,/g,'');
+if(isNaN(num))num="0";
+sign=(num==(num=Math.abs(num)));
+num=Math.floor(num*100+0.50000000001);
+num=Math.floor(num/100).toString();
+for(var i=0;i<Math.floor((num.length-(1+i))/3);i++)num=num.substring(0,num.length-(4*i+3))+'.'+num.substring(num.length-(4*i+3));
+return ((sign)?'':'-')+num;
+}
+</script>
+<div class="row1_1">
+  <div class="os_tPromocoes" id="bannerhome">
+    <div id="nav" class="nav"></div>
+    <div id="slideshow" class="pics">
+      <banner 1>
+      <banner 2>
+      <banner 3>
+      <banner 4>
+    </div>
+  </div>  
+</div>
+<div class="row1_1" style="padding:10px 0;">
+  <div class="row2_1">
+    <!--esquerda-->
+    <!--<div class="os_eNewsletter">
+      <iframe width="240px" height="250px" scrolling="no" frameborder="0" name="news_" id="news_" src="/custom.asp?idloja=<IDloja>&arq=AbtNewsletter.htm&int=1"></iframe>
+    </div>-->
+    <div class="os_eBanner"><banner 5></div>
+
+<div class="pedidosBanner">
+		<a href="http://www.lojadoprazer.com.br/sistema/Custom.asp?IDLoja=343&arq=landing/pedidos.html"><img src="<BaseLoja>images/layout/btn_pedidos.jpg" border="0"></a>
+</div>
+
+<div class="fc-rastreio">
+	<h2>Rastreie seu pedido</h2>
+	<h4>Digite o código de rastreamento</h4>
+	<table>
+		<tr>
+			<td>
+				<input id="fc-consulta-objeto" type="text" size="10" maxlength="35" class="InputText txtNewsNome" style="width:170px;padding:1px;" />
+			</td>
+			<td>
+				<input type="image" onclick="ConsultaSEDEX()" src="<BaseLoja>images/layout/BotRastreioSubmit.png" />
+			</td>
+		</tr>
+	</table>	
+</div>
+
+	<div class="os_eDepartamentos">
+      <h2>Departamentos</h2>
+      <!--<a href="http://www.lojadoprazer.com.br/natal" class="natal"><img src="<BaseLoja>images/banner_natal_lateral.gif" border="0"></a><BR><BR>-->
+<ul>	
+<!--<li><a href="/prod,idloja,<IDloja>,IDCategoria,186250,acessorios-eroticos">Acess&oacute;rios</a>-->
+<li><a href="/prod,idloja,<IDloja>,IDCategoria,4652,acessorios-eroticos">Acess&oacute;rios</a>
+		<ul>
+		  <!--<li><a href="/prod,idloja,<IDloja>,IDCategoria,2065,acessorios-femininos">Acess&oacute;rios Femininos</a></li>-->
+		  <li><a href="/prod,idloja,<IDloja>,IDCategoria,4507,acessorios-femininos">Acess&oacute;rios Femininos</a></li>
+			<!--<li><a href="/prod,idloja,<IDloja>,IDCategoria,2059,aneis-penianos">An&eacute;is Penianos</a></li>-->
+			<li><a href="/prod,idloja,<IDloja>,IDCategoria,4504,aneis-penianos">An&eacute;is Penianos</a></li>
+			<li><a href="/prod,idloja,<IDloja>,IDCategoria,9613,capas-penianas-e-extensores">Capas Penianas e Extensores</a></li>
+			<li><a href="/prod,IDLoja,<IDloja>,IDCategoria,2149,bombas-penianas">Desenvolvedores Penianos</a></li>
+			<li class="last"><a href="/prod,idloja,<IDloja>,IDCategoria,186250,acessorios-eroticos"><b>+ Veja Mais</b></a></li>
+    </ul>
+</li>
+
+<li><a href="/prod,IDLoja,<IDloja>,IDCategoria,186251,brincadeiras-e-jogos">Brincadeiras</a>		
+		 <ul>
+		    <li><a href="/prod,idloja,<IDloja>,IDCategoria,121850,baralhos-eroticos">Baralhos Er&oacute;ticos</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,IDCategoria,113301,dadinhos-eroticos">Dadinhos Er&oacute;ticos</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,IDCategoria,3179,jogos-eroticos">Jogos Er&oacute;ticos</a></li>
+				<li class="last"><a href="/prod,IDLoja,<IDloja>,IDCategoria,186251,brincadeiras-e-jogos"><b>+ Veja Mais</b></a></li>
+		 </ul>
+</li>
+
+<li><a href="/prod,idloja,<IDloja>,IDCategoria,186252,cosmeticos">Cosm&eacute;ticos</a>
+		  <ul>
+		    <li><a href="/prod,idloja,<IDloja>,avancada,true,digitada,true,texto,kamashastra"><strong>Cole&ccedil;&atilde;o KamaShastra</strong></a></li>
+				<li><a href="/prod,idloja,<IDloja>,IDCategoria,117200,gel-para-sexo-anal">Gel para Sexo Anal</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,117203,gel-do-beijo">Gel do Beijo</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,117204,gel-feminino">Gel Feminino</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,117205,gel-masculino">Gel Masculino</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,117201,gel-retardante">Gel Retardante</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,2079,lubrificantes">Lubrificantes</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,127159,velas-para-massagem">Velas para Massagem</a></li>
+				<li class="last"><a href="/prod,idloja,<IDloja>,IDCategoria,186252,cosmeticos"><b>+ Veja Mais</b></a></li>
+		  </ul>
+</li>
+  
+<li><a href="/prod,idloja,<IDloja>,IDCategoria,186257,filmes-em-dvd-e-blu-ray">Filmes</a>
+		  <ul>	      
+        <li><a href="/prod,IDLoja,<IDloja>,IDCategoria,2834,dvd-hetero-importado">DVD Pornô Importado</a></li>
+        <li><a href="/prod,IDLoja,<IDloja>,IDCategoria,8709,dvd-gay-nacional">DVD Gay Nacional</a></li>
+        <li><a href="/prod,idloja,343,avancada,true,digitada,true,texto,loving+sex">Cole&ccedil;&atilde;o Loving Sex</a></li>   
+				<li class="last"><a href="/prod,idloja,<IDloja>,IDCategoria,186257,filmes-em-dvd-e-blu-ray"><b>+ Veja Mais</b></a></li>     
+			</ul>
+</li>
+
+<li><a href="/prod,idloja,<IDloja>,idcategoria,186253,lingeries-eroticas">Lingeries Er&oacute;ticas</a>
+		  <ul>
+		    <li><a href="/prod,idloja,<IDloja>,avancada,true,digitada,true,texto,baci"><strong>Cole&ccedil;&atilde;o Baci</strong></a></li>
+		    <li><a href="/prod,idloja,<IDloja>,avancada,true,digitada,true,texto,magic+silk"><strong>Cole&ccedil;&atilde;o Magic Silk</strong></a></li>
+		    <li><a href="/prod,idloja,<IDloja>,avancada,true,digitada,true,texto,o+couro+come+e+ninguem+ve"><strong>Cole&ccedil;&atilde;o O Couro Come</strong></a></li>	    
+		    <li><a href="/prod,idloja,<IDloja>,produtos,20,order,1,avancada,1,texto,coleção+espiral">Cole&ccedil;&atilde;o Espiral</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,produtos,20,order,1,avancada,1,texto,Coleção+Glamour">Cole&ccedil;&atilde;o Glamour</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,177907,baby-dolls">Baby Dolls</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,2090,bodies">Bodies</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,2091,calcinha-fil-dental">Calcinhas Fio Dental</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,177908,camisolas">Camisolas</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,2100,conjuntos-sensuais">Conjuntos Sensuais</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,4946,cuecas-eroticas">Cuecas Er&oacute;ticas</a></li>
+				<li><a href="/prod,idloja,<IDloja>,IDCategoria,195251,fantasias-eroticas">Fantasias Er&oacute;ticas</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,2099,espartilho">Espartilhos</a></li>
+        <li><a href="/prod,idloja,343,idcategoria,186253,produtos,20,order,1,avancada,1,adicional2,64072">Especial para Noivas</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,140608,macacoes-sensuais">Macac&otilde;es Sensuais</a></li>
+		    <li><a href="/prod,idloja,<IDloja>,idcategoria,13580,vestidos-sensuais">Vestidos Sensuais</a></li>
+				<li class="last"><a href="/prod,idloja,<IDloja>,idcategoria,186253,lingeries-eroticas"><b>+ Veja Mais</b></a></li>
+		  </ul>
+</li>
+     
+				<li><a href="/prod,idloja,<IDloja>,IDCategoria,186284,masturbadores">Masturbadores</a></li>
+				<li><a href="/prod,idloja,<IDloja>,IDCategoria,186278,para-presentear">Para Presentear</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,186255,penis-realisticos">Pênis</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,186279,preservativos">Preservativos</a></li>
+        <li><a href="/prod,idloja,<IDloja>,IDCategoria,186280,sado-e-fetiches">Sado/Fetiche</a></li>
+				<li><a href="/prod,idloja,<IDloja>,idcategoria,186256,vibradores">Vibradores</a></li>
+	
+</ul>
+    </div>
+
+    <div class="os_ePreco">
+      <h2>Escolha por faixa de pre&ccedil;o</h2>
+      <ul>
+        <li><a href="/prod,idloja,<IDloja>,avancada,1,precode,0,precoate,100">At&eacute; R$ 100</a></li>
+        <li><a href="/prod,idloja,<IDloja>,avancada,1,precode,100,precoate,150">R$ 100 at&eacute; R$ 150</a></li>
+        <li><a href="/prod,idloja,<IDloja>,avancada,1,precode,150,precoate,200">R$ 150 at&eacute; R$ 200</a></li>
+        <li><a href="/prod,idloja,<IDloja>,avancada,1,precode,200,precoate,10000">Acima de R$ 200</a></li>       
+      </ul>
+    </div>
+
+ </div>
+  <div class="row2_2">
+  <!--content-->
+    <ul class="tabs">
+      <li><a href="#tab1">LAN&Ccedil;AMENTOS</a></li>
+      <li><a href="#tab2">+ VENDIDOS</a></li>
+      <li><a href="#tab3">PROMO&Ccedil;&Otilde;ES</a></li>
+			<li><a href="#tab4">ERÓTIKA FAIR</a></li>
+          
+    </ul>
+    <div class="tab_container">
+      <div id="tab1" class="tab_content">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">    
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">    
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">    
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+        <prod out="p255" em="lanc,rand">
+      </div>
+      <div id="tab2" class="tab_content">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">    
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">    
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">    
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+        <prod out="p255" em="capa,rand">
+      </div>
+      <div id="tab3" class="tab_content">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">    
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">    
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">    
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+        <prod out="p255" em="prom,rand">
+      </div>
+      <div id="tab4" class="tab_content">
+        <prod out="p255" cod="95001" em="rand">
+        <prod out="p255" cod="95002" em="rand">
+        <prod out="p255" cod="95003" em="rand"> 
+        <prod out="p255" cod="95004" em="rand">
+	      <prod out="p255" cod="95005" em="rand">
+	      <prod out="p255" cod="95006" em="rand">
+	      <prod out="p255" cod="95007" em="rand"> 
+	      <prod out="p255" cod="95008" em="rand">
+		    <prod out="p255" cod="95009" em="rand">
+
+      </div>
+      
+    </div>
+  </div>
+</div>
